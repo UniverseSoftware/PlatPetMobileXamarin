@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PlatPet.Views.ContentPageViewAgendarConsulta">
+    <ContentPage.Content>
+        <ScrollView>
+        <StackLayout BackgroundColor="#FFFCCF">
+            <Label Text="Empresa"/>
+            <Entry IsEnabled="False"></Entry>
+            <Label Text="Serviço"/>
+            <Entry IsEnabled="False"></Entry>
+            <Label Text="Pet" /> 
+            <Picker x:Name="icker"
+                   
+        Title="Selecione seu Pet">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Alfredo</x:String>
+                        <x:String>Valentina</x:String>
+                        <x:String>Pistolinha</x:String>
+                        
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+            
+            <Label Text="Tipo de Serviço" />
+            <Picker x:Name="ppicker" Title="Selecione o tipo de Serviço">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>30,00 Banho</x:String>
+                        <x:String>35,00 Banho Tosa</x:String>
+                        
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+            <Label Text="Valor Total"/>
+            <Label Text="Forma de Pagamento"/>
+            <Picker x:Name="pppicker" Title="Forma de Pagamento">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Dinheiro</x:String>
+                        <x:String>Cartão de Crédito</x:String>
+                        <x:String>Cartão de Débito</x:String>
+                        <x:String>PetCash</x:String>
+                        
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+                <Button Text="Confirmar" CornerRadius="100" BackgroundColor="#E28249" IsEnabled="True"></Button>
+        </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

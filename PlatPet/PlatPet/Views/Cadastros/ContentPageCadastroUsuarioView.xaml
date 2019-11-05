@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PlatPet.Views.ContentPageCadastroUsuarioView">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout BackgroundColor="#FFFCCF">
+                <Label Text="Usuario"></Label>
+                <Entry Text="{Binding Usuario}" WidthRequest="20" ></Entry>
+                <Label Text="Senha"></Label>
+                <Entry Text="{Binding Senha}" Keyboard="Default" IsPassword="True" ></Entry>
+                <Label Text="Nome"></Label>
+                <Entry Text="{Binding Nome}"></Entry>
+                <Label Text="Sobrenome"></Label>
+                <Entry Text="{Binding Sobrenome}"></Entry>
+                <Label Text="CPF"></Label>
+                <Entry Text="{Binding CPF}" MaxLength="11"></Entry>
+                <Label Text="Telefone"></Label>
+                <Entry Text="{Binding Telefone}" Keyboard="Numeric" ></Entry>
+                <Label Text="Email"></Label>
+                <Entry Text="{Binding Email}"></Entry>
+                <Label Text="Endereço"></Label>
+                <Entry Text="{Binding Endereco}"></Entry>
+                <Button Text="Confirmar" BackgroundColor="#E28249" Command="{Binding GravarCommand}"></Button>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PlatPet.Views.ContentPageViewLogin">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="#FFFCCF"  >
+
+            <Image Source="marca1.jpg"  WidthRequest="150" HeightRequest="200" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand"/>
+
+            <Label   Text="Email "   VerticalOptions="Fill" TextColor="#A96134" HorizontalOptions="Start" FontSize="15" />
+
+            <Entry 
+                   Placeholder="Entre com seu Usuário"
+                 VerticalOptions="FillAndExpand"
+                   HorizontalOptions="FillAndExpand" 
+                   Text ="{Binding User}">
+            </Entry>
+
+            <Label  Text="Senha " VerticalOptions="Fill" TextColor="#A96134" HorizontalOptions="Start" />
+
+            <Entry 
+                   Placeholder="Entre com o sua senha"
+                  IsPassword="True"
+                   VerticalOptions="FillAndExpand"
+                  HorizontalOptions="FillAndExpand"
+                   Text="{Binding Senha}">
+            </Entry>
+
+
+            <Label  Text= " Esqueceu a sua Senha?" TextDecorations="Underline"   TextColor="#A96134" HorizontalTextAlignment="Center" />
+
+            <RelativeLayout>
+                <Button x:Name="registerButton" Text="Cadastro" BorderRadius="20"  WidthRequest="180" HeightRequest="50" BackgroundColor="#CF7B47"
+                       RelativeLayout.XConstraint =
+      "{ConstraintExpression Type=RelativeToParent,
+                             Property=Width,
+                             Factor=0.41,
+                             Constant=-145}" 
+                       RelativeLayout.YConstraint =
+      "{ConstraintExpression Type=RelativeToParent,
+                             Property=Height,
+                             Factor=0.53,
+                             Constant=-100}" />
+
+                <Button x:Name="EntarButton" Text="Entrar" Clicked="Login" BorderRadius="20" WidthRequest="180" HeightRequest="50" BackgroundColor="#CF7B47"
+                        RelativeLayout.XConstraint =
+      "{ConstraintExpression Type=RelativeToParent,
+                             Property=Width,
+                             Factor=0.90,
+                             Constant=-150}" 
+                       RelativeLayout.YConstraint =
+      "{ConstraintExpression Type=RelativeToParent,
+                             Property=Height,
+                             Factor=0.53,
+                             Constant=-100}" Command="{Binding EntrarCommand}"/>
+
+                <Label Text=" Utilizando o app, você concorda com os Termos de uso
+                                                e com a Politica de Privacidade"
+                       TextColor="#A96134"  
+                       RelativeLayout.XConstraint =
+      "{ConstraintExpression Type=RelativeToParent,
+                             Property=Width,
+                             Factor=0.90,
+                             Constant=-350}" 
+                       RelativeLayout.YConstraint =
+      "{ConstraintExpression Type=RelativeToParent,
+                             Property=Height,
+                             Factor=0.69,
+                             Constant=-100}"/>
+
+
+
+
+            </RelativeLayout>
+
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

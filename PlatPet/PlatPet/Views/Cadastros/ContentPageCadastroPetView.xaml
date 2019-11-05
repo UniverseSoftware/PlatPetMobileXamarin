@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PlatPet.Views.Cadastros.ContentPageCadastroPetView">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="#FFFCCF">
+            <Label Text="Nome Pet" ></Label>
+            <Entry Text="{Binding NomePet}"></Entry>
+            <Label Text="Sub Espécie"></Label>
+            <Entry Text="{Binding SubEspecie}"></Entry>
+            <Label Text="RG do Pet"></Label>
+            <Entry Text="{Binding RG}"></Entry>
+            <Label Text="Observação"></Label>
+            <Entry Text="{Binding Observacao}"></Entry>
+            <Button Text="Gravar" BackgroundColor="#E28249" Command="{Binding GravarCommand}"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

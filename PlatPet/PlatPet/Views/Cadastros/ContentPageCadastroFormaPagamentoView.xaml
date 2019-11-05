@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PlatPet.Views.Cadastros.ContentPageCadastroFormaPagamentoView">
+    <ContentPage.Content>
+        <StackLayout>
+            <TableView Intent="Form" BackgroundColor="#FFFCCF">
+                <TableRoot>
+                    <TableSection>
+                        <EntryCell Label="Descrição:"  Text="{Binding Descricao}"></EntryCell>
+                        
+                        <ViewCell>
+
+                            <Button Text="Gravar" BackgroundColor="#E28249" Clicked="Button_Clicked" Command="{Binding GravarComando}"/>
+                          
+                        </ViewCell>
+                    </TableSection>
+                </TableRoot>
+                </TableView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

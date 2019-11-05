@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PlatPet.Views.ContentPageViewCarregando">
+    <ContentPage.Content>
+        <RelativeLayout BackgroundColor="#FFFCCF">
+            <Image Source="marca1.png" WidthRequest="120" HeightRequest="180" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand"
+                   RelativeLayout.XConstraint =
+      "{ConstraintExpression Type=RelativeToParent,
+                             Property=Width,
+                             Factor=0.65,
+                             Constant=-100}" 
+                       RelativeLayout.YConstraint =
+      "{ConstraintExpression Type=RelativeToParent,
+                             Property=Height,
+                             Factor=0.35,
+                             Constant=-100}" />
+            <Label Text="Carregando..." TextColor="#A96134" FontSize="Micro" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand"
+                   RelativeLayout.XConstraint =
+      "{ConstraintExpression Type=RelativeToParent,
+                             Property=Width,
+                             Factor=0.77,
+                             Constant=-100}" 
+                       RelativeLayout.YConstraint =
+      "{ConstraintExpression Type=RelativeToParent,
+                             Property=Height,
+                             Factor=0.9,
+                             Constant=-100}"/>
+        </RelativeLayout>
+    </ContentPage.Content>
+</ContentPage>
