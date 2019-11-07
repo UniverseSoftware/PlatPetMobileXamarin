@@ -9,21 +9,12 @@
             <Entry IsEnabled="False"></Entry>
             <Label Text="Serviço"/>
             <Entry IsEnabled="False"></Entry>
-            <Label Text="Pet" /> 
-            <Picker x:Name="icker"
-                   
-        Title="Selecione seu Pet">
-                <Picker.ItemsSource>
-                    <x:Array Type="{x:Type x:String}">
-                        <x:String>Alfredo</x:String>
-                        <x:String>Valentina</x:String>
-                        <x:String>Pistolinha</x:String>
-                        
-                    </x:Array>
-                </Picker.ItemsSource>
-            </Picker>
-            
-            <Label Text="Tipo de Serviço" />
+            <Label Text="Pet" />
+                <Picker Title="Selecione seu Pet" ItemsSource="{Binding Pets}"  ItemDisplayBinding="{Binding NomePet}"/>
+
+
+
+                <Label Text="Tipo de Serviço" />
             <Picker x:Name="ppicker" Title="Selecione o tipo de Serviço">
                 <Picker.ItemsSource>
                     <x:Array Type="{x:Type x:String}">

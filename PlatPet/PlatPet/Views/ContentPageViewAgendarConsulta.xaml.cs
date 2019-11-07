@@ -1,4 +1,6 @@
-﻿using PlatPet.ViewModel.CadastroUsuario;
+﻿using PlatPet.Models;
+using PlatPet.ViewModel.Agendamento;
+using PlatPet.ViewModel.CadastroUsuario;
 using PlatPet.ViewModel.Pets;
 using System.Collections.Generic;
 
@@ -10,13 +12,18 @@ namespace PlatPet.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class ContentPageViewAgendarConsulta : ContentPage
 	{
-        CadastroUsuarioViewModel cadastroUsuarioVieModel;
-        CadastroEmpresaViewModel cadastroEmpresaViewModel;
-        CadastroPetViewModel CadastroPetViewModel;
-		public ContentPageViewAgendarConsulta ()
-		{
-			InitializeComponent ();
+        AgendamentoConsultaViewModel agendamentoConsultaViewModel;
+        public ContentPageViewAgendarConsulta()
+        {
+            InitializeComponent();
+            agendamentoConsultaViewModel = new AgendamentoConsultaViewModel();
+            BindingContext = agendamentoConsultaViewModel;
 
+
+            agendamentoConsultaViewModel.Chamar();
+             
+
+            /*
             var lstPet = new List<string>();
             lstPet.Add("Alfredo");
             lstPet.Add("Valentina");
@@ -25,7 +32,7 @@ namespace PlatPet.Views
             ;
 
             var pet = new Picker { Title = "Selecione seu Pet" };
-            pet.ItemsSource = lstPet;
+            pet.ItemsSource = lstPet;*/
 
 
             var lstServico = new List<string>();
