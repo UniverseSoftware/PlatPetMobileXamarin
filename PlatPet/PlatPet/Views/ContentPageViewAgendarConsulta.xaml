@@ -26,17 +26,7 @@
             </Picker>
             <Label Text="Valor Total"/>
             <Label Text="Forma de Pagamento"/>
-            <Picker x:Name="pppicker" Title="Forma de Pagamento">
-                <Picker.ItemsSource>
-                    <x:Array Type="{x:Type x:String}">
-                        <x:String>Dinheiro</x:String>
-                        <x:String>Cartão de Crédito</x:String>
-                        <x:String>Cartão de Débito</x:String>
-                        <x:String>PetCash</x:String>
-                        
-                    </x:Array>
-                </Picker.ItemsSource>
-            </Picker>
+                <Picker Title="Forma de Pagamento" ItemsSource="{Binding Pag}" ItemDisplayBinding="{Binding DescPagamento}"/>
                 <Button Text="Confirmar" CornerRadius="100" BackgroundColor="#E28249" IsEnabled="True"></Button>
         </StackLayout>
         </ScrollView>

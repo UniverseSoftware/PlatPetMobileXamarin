@@ -1,4 +1,5 @@
 ﻿using PlatPet.Models;
+using PlatPet.Services.Pagamentos;
 using PlatPet.Services.Pets;
 using System;
 using System.Collections.Generic;
@@ -11,9 +12,17 @@ namespace PlatPet.ViewModel.Agendamento
     public class AgendamentoConsultaViewModel : BaseViewModel
     {
         private Pet pet;
+        private FormaPagamento pag;
 
-        private IPetService cService = new PetService();
+        private IPetService pService = new PetService();
+        private IFormaPagarService fService = new FormaPagarService();
+
         public ObservableCollection<Pet> Pets
+        {
+            get; set;
+        }
+
+        public ObservableCollection<FormaPagamento> Pag
         {
             get; set;
         }
@@ -21,24 +30,43 @@ namespace PlatPet.ViewModel.Agendamento
         public AgendamentoConsultaViewModel()
         {
             Pets = new ObservableCollection<Pet>();
+            Pag = new ObservableCollection<FormaPagamento>();
         }
 
-        public void Chamar()
+        public async Task Chamar()
         {
             Pets = new ObservableCollection<Pet>();
+            Pag = new ObservableCollection<FormaPagamento>();
             ObterPetAsync();
+            ObterFormaPagamentoAsync();
         }
 
         public async Task ObterPetAsync()
         {
-            Pets = await cService.GetPetAsync();
+            Pets = await pService.GetPetAsync();
             OnPropertyChanged(nameof(Pets));
 
-            foreach(var teste in Pets)
+            foreach(var pets in Pets)
             {
                 Pets.Add(new Pet
                 {
-                    NomePet = teste.NomePet
+                    NomePet = pets.NomePet,
+                    IdPet = pets.IdPet
+                });
+            }
+        }
+
+        public async Task ObterFormaPagamentoAsync()
+        {
+            Pag = await fService.GetFormaPagarAsync();
+            OnPropertyChanged(nameof(Pag));
+
+            foreach(var pags in Pag)
+            {
+                Pag.Add(new FormaPagamento
+                {
+                    DescPagamento = pags.DescPagamento,
+                    IdPagemento = pags.IdPagemento
                 });
             }
         }

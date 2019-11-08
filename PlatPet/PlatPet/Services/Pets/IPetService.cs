@@ -11,6 +11,10 @@ namespace PlatPet.Services.Pets
     {
         Task<ObservableCollection<Pet>> GetPetAsync();
 
+        Task<ObservableCollection<Pet>> GetEspecieAsync();
+
+        Task<ObservableCollection<Pet>> GetSubEspecieAsync();
+
         Task<Pet> PostPetAsync(Pet p);
 
         Task<Pet> PutPetAsync(Pet p);

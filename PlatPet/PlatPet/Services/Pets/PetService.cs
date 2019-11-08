@@ -11,6 +11,8 @@ namespace PlatPet.Services.Pets
     {
         private readonly IRequest _request;
         private const string ApiUrlBase = "http://universesoftware2019.somee.com/api/Pets";
+        private const string ApiUrlBaseEspecie = "http://universesoftware2019.somee.com/api/Especies";
+        private const string ApiUrlBaseSubEspecie = "http://universesoftware2019.somee.com/api/SubEspecies";
 
         public PetService()
         {
@@ -48,6 +50,22 @@ namespace PlatPet.Services.Pets
             string urlComplementar = string.Format("/{0}", p);
             var result = await _request.PutAsync(ApiUrlBase, p);
             return result;
+        }
+
+        public async Task<ObservableCollection<Pet>> GetEspecieAsync()
+        {
+            ObservableCollection<Pet> pet = await
+                _request.GetAsync<ObservableCollection<Pet>>(ApiUrlBaseEspecie);
+
+            return pet;
+        }
+
+        public async Task<ObservableCollection<Pet>> GetSubEspecieAsync()
+        {
+            ObservableCollection<Pet> pet = await
+                _request.GetAsync<ObservableCollection<Pet>>(ApiUrlBaseSubEspecie);
+
+            return pet;
         }
     }
 }
