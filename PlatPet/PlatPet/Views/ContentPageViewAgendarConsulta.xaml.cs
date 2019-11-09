@@ -25,7 +25,7 @@ namespace PlatPet.Views
             base.OnAppearing();
             Device.BeginInvokeOnMainThread(async () =>
             {
-                await agendamentoConsultaViewModel.Chamar();
+                await agendamentoConsultaViewModel.Popular();
             });
             MessagingCenter.Subscribe<string>(this, "InformacaoCRUD", async (msg) =>
             {

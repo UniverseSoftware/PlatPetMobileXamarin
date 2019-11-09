@@ -13,15 +13,15 @@ namespace PlatPet.Views.Cadastros
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class ContentPageCadastroPetView : ContentPage
 	{
-        ListaPetViewModel listaPetViewModel;
+        //ListaPetViewModel listaPetViewModel;
         CadastroPetViewModel cadastroPetViewModel;
 		public ContentPageCadastroPetView ()
 		{
 			InitializeComponent ();
             cadastroPetViewModel = new CadastroPetViewModel();
-            listaPetViewModel = new ListaPetViewModel();
+            //listaPetViewModel = new ListaPetViewModel();
             BindingContext = cadastroPetViewModel;
-            BindingContext = listaPetViewModel;
+            //BindingContext = listaPetViewModel;
         }
 
         protected override void OnAppearing()
@@ -29,8 +29,7 @@ namespace PlatPet.Views.Cadastros
             base.OnAppearing();
             Device.BeginInvokeOnMainThread(async () =>
             {
-                //await listaPetViewModel.ObterEspecieAsync();
-                await listaPetViewModel.ObterSubEspecieAsync();
+                await cadastroPetViewModel.Popular();
             });
             MessagingCenter.Subscribe<string>(this, "InformacaoCRUD", async (msg) =>
             {

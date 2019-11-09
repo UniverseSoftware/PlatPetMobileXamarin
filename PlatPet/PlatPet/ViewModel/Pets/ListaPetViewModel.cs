@@ -15,7 +15,7 @@ namespace PlatPet.ViewModel.Pets
     {
         private Pet pet;
 
-        private IPetService cService = new PetService(); 
+        private IPetService cService = new PetService();
         public ObservableCollection<Pet> Pets
         {
             get; set;
@@ -38,10 +38,31 @@ namespace PlatPet.ViewModel.Pets
             SubEspecies = new ObservableCollection<Pet>();
         }
 
+        public async Task Popular()
+        {
+             ObterEspecieAsync();
+             ObterSubEspecieAsync();
+        }
+
         public async Task ObterPetAsync()
         {
             Pets = await cService.GetPetAsync();
             OnPropertyChanged(nameof(Pets));
+        }
+
+        public async Task ObterEspecieAsync()
+        {
+            Especies = await cService.GetEspecieAsync();
+            OnPropertyChanged(nameof(Especies));
+
+            foreach (var especies in Especies)
+            {
+                Especies.Add(new Pet
+                {
+                    NomeEspecie = especies.NomeEspecie,
+                    IdEspecie = especies.IdEspecie +1
+                });
+            }
         }
 
         public async Task ObterSubEspecieAsync()
@@ -58,20 +79,5 @@ namespace PlatPet.ViewModel.Pets
                 });
             }
         }
-
-       /* public async Task ObterEspecieAsync()
-        {
-            Especies = await cService.GetEspecieAsync();
-            OnPropertyChanged(nameof(Especies));
-
-            foreach (var especies in Especies)
-            {
-                Especies.Add(new Pet
-                {
-                    NomeEspecie = especies.NomeEspecie,
-                    IdEspecie = especies.IdEspecie
-                });
-            }
-        }*/
     }
 }

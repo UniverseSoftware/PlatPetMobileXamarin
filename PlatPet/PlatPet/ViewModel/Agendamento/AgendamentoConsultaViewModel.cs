@@ -41,7 +41,7 @@ namespace PlatPet.ViewModel.Agendamento
             Servicos = new ObservableCollection<Servico>();
         }
 
-        public async Task Chamar()
+        public async Task Popular()
         {
             Pets = new ObservableCollection<Pet>();
             Pag = new ObservableCollection<FormaPagamento>();

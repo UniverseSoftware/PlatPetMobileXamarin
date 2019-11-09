@@ -1,5 +1,7 @@
 ﻿using PlatPet.Models;
 using PlatPet.Services.Pets;
+using System;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -18,6 +20,11 @@ namespace PlatPet.ViewModel.Pets
         {
             RegistrarCommands();
             Pet = new Pet();
+
+
+            Pets = new ObservableCollection<Pet>();
+            Especies = new ObservableCollection<Pet>();
+            SubEspecies = new ObservableCollection<Pet>();
         }
 
         private void RegistrarCommands()
@@ -46,7 +53,7 @@ namespace PlatPet.ViewModel.Pets
             {
                 this.NomePet = string.Empty;
                 this.RG = string.Empty;
-                this.SubEspecie = 0;
+                //this.SubEspecie = 0;
                 this.Observacao = string.Empty;
                 this.Pet = new Pet();
             }
@@ -61,13 +68,17 @@ namespace PlatPet.ViewModel.Pets
             }
         }
 
-        public int SubEspecie
+        public Pet SubEspecie
         {
-            get { return this.Pet.IdSubespecie; }
+            get { return pet; }
             set
             {
-                this.Pet.IdSubespecie = value;
-                OnPropertyChanged();
+                if (value != null)
+                {
+                    pet = value;
+                    OnPropertyChanged();
+                    this.Pet.IdSubespecie = pet.IdSubespecie;
+                }
             }
         }
 
@@ -90,5 +101,83 @@ namespace PlatPet.ViewModel.Pets
                 OnPropertyChanged();
             }
         }
+
+        public async Task Gravar()
+        {
+            await GravarAsync();
+            Mensagem();
+        }
+
+        private void Mensagem()
+        {
+            MessagingCenter.Send<string>("Dado salvo com sucesso.", "InformacaoCRUD");
+        }
+
+
+
+
+        #region Lista
+
+        private Pet pet;
+
+        private IPetService cService = new PetService();
+        public ObservableCollection<Pet> Pets
+        {
+            get; set;
+        }
+
+        public ObservableCollection<Pet> SubEspecies
+        {
+            get; set;
+        }
+
+        public ObservableCollection<Pet> Especies
+        {
+            get; set;
+        }
+
+        public async Task Popular()
+        {
+            ObterEspecieAsync();
+            ObterSubEspecieAsync();
+        }
+
+        public async Task ObterPetAsync()
+        {
+            Pets = await cService.GetPetAsync();
+            OnPropertyChanged(nameof(Pets));
+        }
+
+        public async Task ObterEspecieAsync()
+        {
+            Especies = await cService.GetEspecieAsync();
+            OnPropertyChanged(nameof(Especies));
+
+            foreach (var especies in Especies)
+            {
+                Especies.Add(new Pet
+                {
+                    NomeEspecie = especies.NomeEspecie,
+                    IdEspecie = especies.IdEspecie + 1
+                });
+            }
+        }
+
+        public async Task ObterSubEspecieAsync()
+        {
+            SubEspecies = await cService.GetSubEspecieAsync();
+            OnPropertyChanged(nameof(SubEspecies));
+
+            foreach (var subespecies in SubEspecies)
+            {
+                SubEspecies.Add(new Pet
+                {
+                    NomeSubEspecie = subespecies.NomeSubEspecie,
+                    IdSubespecie = subespecies.IdSubespecie
+                });
+            }
+        }
+
+        #endregion
     }
 }
