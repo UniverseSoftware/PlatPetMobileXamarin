@@ -1,6 +1,7 @@
 ﻿using PlatPet.Models;
 using PlatPet.Services.Pagamentos;
 using PlatPet.Services.Pets;
+using PlatPet.Services.Servicos;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -16,6 +17,7 @@ namespace PlatPet.ViewModel.Agendamento
 
         private IPetService pService = new PetService();
         private IFormaPagarService fService = new FormaPagarService();
+        private IServicosService sService = new ServicosService();
 
         public ObservableCollection<Pet> Pets
         {
@@ -27,18 +29,26 @@ namespace PlatPet.ViewModel.Agendamento
             get; set;
         }
 
+        public ObservableCollection<Servico> Servicos
+        {
+            get; set;
+        }
+
         public AgendamentoConsultaViewModel()
         {
             Pets = new ObservableCollection<Pet>();
             Pag = new ObservableCollection<FormaPagamento>();
+            Servicos = new ObservableCollection<Servico>();
         }
 
         public async Task Chamar()
         {
             Pets = new ObservableCollection<Pet>();
             Pag = new ObservableCollection<FormaPagamento>();
+            Servicos = new ObservableCollection<Servico>();
             ObterPetAsync();
             ObterFormaPagamentoAsync();
+            ObterServicoAsync();
         }
 
         public async Task ObterPetAsync()
@@ -67,6 +77,21 @@ namespace PlatPet.ViewModel.Agendamento
                 {
                     DescPagamento = pags.DescPagamento,
                     IdPagemento = pags.IdPagemento
+                });
+            }
+        }
+
+        public async Task ObterServicoAsync()
+        {
+            Servicos = await sService.GetServicoAsync();
+            OnPropertyChanged(nameof(Servicos));
+
+            foreach (var services in Servicos)
+            {
+                Servicos.Add(new Servico
+                {
+                    IdServico = services.IdServico,
+                    NomeServico = services.NomeServico 
                 });
             }
         }

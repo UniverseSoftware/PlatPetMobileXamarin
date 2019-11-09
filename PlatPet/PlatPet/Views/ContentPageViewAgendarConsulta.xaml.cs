@@ -17,16 +17,7 @@ namespace PlatPet.Views
         {
             InitializeComponent();
             agendamentoConsultaViewModel = new AgendamentoConsultaViewModel();
-            BindingContext = agendamentoConsultaViewModel;
-
-            var lstServico = new List<string>();
-            lstServico.Add("30,00 Banho");
-            lstServico.Add("35,00 Banho Tosa");
-            
-            
-
-            var servico = new Picker { Title = "Selecione seu Pet" };
-            servico.ItemsSource = lstServico;
+            BindingContext = agendamentoConsultaViewModel;            
         }
 
         protected override void OnAppearing()

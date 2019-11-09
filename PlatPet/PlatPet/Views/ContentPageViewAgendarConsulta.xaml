@@ -15,14 +15,8 @@
 
 
                 <Label Text="Tipo de Serviço" />
-            <Picker x:Name="ppicker" Title="Selecione o tipo de Serviço">
-                <Picker.ItemsSource>
-                    <x:Array Type="{x:Type x:String}">
-                        <x:String>30,00 Banho</x:String>
-                        <x:String>35,00 Banho Tosa</x:String>
-                        
-                    </x:Array>
-                </Picker.ItemsSource>
+            <Picker Title="Selecione o tipo de Serviço" ItemsSource="{Binding Servicos}"  ItemDisplayBinding="{Binding NomeServico}">
+                
             </Picker>
             <Label Text="Valor Total"/>
             <Label Text="Forma de Pagamento"/>

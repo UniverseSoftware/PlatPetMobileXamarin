@@ -8,6 +8,7 @@ namespace PlatPet.Models
     {
         public int IdServico { get; set; }
         public string NomeServico { get; set; }
-        public string ValorServico { get; set; }
+        public string DescServico { get; set; }
+        //public string ValorServico { get; set; } Avisar o anderson para que crie esta propriedade na API
     }
 }
