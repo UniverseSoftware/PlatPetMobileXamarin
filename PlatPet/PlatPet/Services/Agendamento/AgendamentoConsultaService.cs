@@ -11,14 +11,14 @@ using PlatPet.Services.UsuarioPessoas;
 
 namespace PlatPet.Services.Agendamento
 {
-    public class AgendamentoConsultaService : IPetService, IUsuarioPessoaService, IFormaPagarService, IServicosService
+    public class AgendamentoConsultaService : IPetService, IUsuarioPessoaService, IFormaPagarService, IServicosService, IServicoEmpresasService
     {
-
-        #region Constantes
+        #region Url
         private readonly IRequest _request;
         private const string ApiUrlBasePet = "http://universesoftware2019.somee.com/api/Pets";
         private const string ApiUrlBasePagamento = "http://universesoftware2019.somee.com/api/Pagamentos";
         private const string ApiUrlBaseServico = "http://universesoftware2019.somee.com/api/Servicos";
+        private const string ApiUrlBaseServEmp = "http://universesoftware2019.somee.com/api/ServicoEmpresas";
 
         #endregion
 
@@ -105,6 +105,33 @@ namespace PlatPet.Services.Agendamento
         }
 
         public Task<ObservableCollection<Pet>> GetEspecieAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
+
+        #region Serviços Empresas
+
+        public async Task<ObservableCollection<ServicoEmpresas>> GetServicoEmpresaAsync()
+        {
+            ObservableCollection<ServicoEmpresas> servEmp = await
+                _request.GetAsync<ObservableCollection<ServicoEmpresas>>(ApiUrlBaseServEmp);
+
+            return servEmp;
+        }
+
+        public Task<ServicoEmpresas> PostServicoEmpresaAsync(ServicoEmpresas s)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<ServicoEmpresas> PutServicoEmpresaAsync(ServicoEmpresas s)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<ServicoEmpresas> DeleteServicoEmpresaAsync(int servicoId)
         {
             throw new NotImplementedException();
         }

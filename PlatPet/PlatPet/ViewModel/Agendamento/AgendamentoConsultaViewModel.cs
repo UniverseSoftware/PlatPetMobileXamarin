@@ -18,47 +18,82 @@ namespace PlatPet.ViewModel.Agendamento
         private IPetService pService = new PetService();
         private IFormaPagarService fService = new FormaPagarService();
         private IServicosService sService = new ServicosService();
+        private IServicoEmpresasService seService = new ServicoEmpresasService();
 
-        public ObservableCollection<Pet> Pets
+        public ObservableCollection<Pet> PetsP
         {
             get; set;
         }
 
-        public ObservableCollection<FormaPagamento> Pag
+        public ObservableCollection<Pet> PetsG
         {
             get; set;
         }
 
-        public ObservableCollection<Servico> Servicos
+        public ObservableCollection<FormaPagamento> PagP
+        {
+            get; set;
+        }
+
+        public ObservableCollection<FormaPagamento> PagG
+        {
+            get; set;
+        }
+
+        public ObservableCollection<Servico> ServicosP
+        {
+            get; set;
+        }
+
+        public ObservableCollection<Servico> ServicosG
+        {
+            get; set;
+        }
+
+        public ObservableCollection<ServicoEmpresas> ServicosEmpP
+        {
+            get; set;
+        }
+
+        public ObservableCollection<ServicoEmpresas> ServicosEmpG
+        {
+            get; set;
+        }
+
+        public ObservableCollection<ServicosComEmpresa> ServComEmp
         {
             get; set;
         }
 
         public AgendamentoConsultaViewModel()
         {
-            Pets = new ObservableCollection<Pet>();
-            Pag = new ObservableCollection<FormaPagamento>();
-            Servicos = new ObservableCollection<Servico>();
+            PetsP = new ObservableCollection<Pet>();
+            PetsG = new ObservableCollection<Pet>();
+            PagP = new ObservableCollection<FormaPagamento>();
+            PagG = new ObservableCollection<FormaPagamento>();
+            ServicosP = new ObservableCollection<Servico>();
+            ServicosG = new ObservableCollection<Servico>();
+            ServicosEmpP = new ObservableCollection<ServicoEmpresas>();
+            ServicosEmpG = new ObservableCollection<ServicoEmpresas>();
+            ServComEmp = new ObservableCollection<ServicosComEmpresa>();
         }
 
         public async Task Popular()
         {
-            Pets = new ObservableCollection<Pet>();
-            Pag = new ObservableCollection<FormaPagamento>();
-            Servicos = new ObservableCollection<Servico>();
             ObterPetAsync();
             ObterFormaPagamentoAsync();
             ObterServicoAsync();
+            ObterServEmpAsync();
         }
 
         public async Task ObterPetAsync()
         {
-            Pets = await pService.GetPetAsync();
-            OnPropertyChanged(nameof(Pets));
+            PetsP = await pService.GetPetAsync();
+            OnPropertyChanged(nameof(PetsG));
 
-            foreach(var pets in Pets)
+            foreach(var pets in PetsP)
             {
-                Pets.Add(new Pet
+                PetsG.Add(new Pet
                 {
                     NomePet = pets.NomePet,
                     IdPet = pets.IdPet
@@ -68,12 +103,12 @@ namespace PlatPet.ViewModel.Agendamento
 
         public async Task ObterFormaPagamentoAsync()
         {
-            Pag = await fService.GetFormaPagarAsync();
-            OnPropertyChanged(nameof(Pag));
+            PagP = await fService.GetFormaPagarAsync();
+            OnPropertyChanged(nameof(PagG));
 
-            foreach(var pags in Pag)
+            foreach(var pags in PagP)
             {
-                Pag.Add(new FormaPagamento
+                PagG.Add(new FormaPagamento
                 {
                     DescPagamento = pags.DescPagamento,
                     IdPagemento = pags.IdPagemento
@@ -83,15 +118,54 @@ namespace PlatPet.ViewModel.Agendamento
 
         public async Task ObterServicoAsync()
         {
-            Servicos = await sService.GetServicoAsync();
-            OnPropertyChanged(nameof(Servicos));
+            ServicosP = await sService.GetServicoAsync();
+            OnPropertyChanged(nameof(ServicosG));
 
-            foreach (var services in Servicos)
+            foreach (var services in ServicosP)
             {
-                Servicos.Add(new Servico
+                ServicosG.Add(new Servico
                 {
                     IdServico = services.IdServico,
                     NomeServico = services.NomeServico 
+                });
+            }
+        }
+
+        public async Task ObterServEmpAsync()
+        {
+            ServicosEmpP = await seService.GetServicoEmpresaAsync();
+            OnPropertyChanged(nameof(ServicosG));
+
+            foreach(var servEmp in ServicosEmpP)
+            {
+                ServicosEmpG.Add(new ServicoEmpresas
+                {
+                    IdEmpresa = servEmp.IdEmpresa,
+                    IdServico = servEmp.IdServico,
+                    IdServicoEmpresa = servEmp.IdServicoEmpresa,
+                    VlServicoEmpresa = servEmp.VlServicoEmpresa
+                });
+            }
+        }
+
+        public async Task ObterServComEmp()
+        {
+            foreach (var services in ServicosP)
+            {
+                ServComEmp.Add(new ServicosComEmpresa
+                {
+                    IdServico = services.IdServico,
+                    NomeServico = services.NomeServico
+                });
+            }
+
+            foreach (var servEmp in ServicosEmpP)
+            {
+                ServComEmp.Add(new ServicosComEmpresa
+                {
+                    IdEmpresa = servEmp.IdEmpresa,
+                    IdServicoEmpresa = servEmp.IdServicoEmpresa,
+                    VlServicoEmpresa = servEmp.VlServicoEmpresa
                 });
             }
         }

@@ -23,8 +23,10 @@ namespace PlatPet.ViewModel.Pets
 
 
             Pets = new ObservableCollection<Pet>();
-            Especies = new ObservableCollection<Pet>();
-            SubEspecies = new ObservableCollection<Pet>();
+            EspeciesP = new ObservableCollection<Pet>();
+            EspeciesG = new ObservableCollection<Pet>();
+            SubEspeciesP = new ObservableCollection<Pet>();
+            SubEspeciesG = new ObservableCollection<Pet>();
         }
 
         private void RegistrarCommands()
@@ -126,12 +128,22 @@ namespace PlatPet.ViewModel.Pets
             get; set;
         }
 
-        public ObservableCollection<Pet> SubEspecies
+        public ObservableCollection<Pet> EspeciesP
         {
             get; set;
         }
 
-        public ObservableCollection<Pet> Especies
+        public ObservableCollection<Pet> EspeciesG
+        {
+            get; set;
+        }
+
+        public ObservableCollection<Pet> SubEspeciesP
+        {
+            get; set;
+        }
+
+        public ObservableCollection<Pet> SubEspeciesG
         {
             get; set;
         }
@@ -150,32 +162,32 @@ namespace PlatPet.ViewModel.Pets
 
         public async Task ObterEspecieAsync()
         {
-            Especies = await cService.GetEspecieAsync();
-            OnPropertyChanged(nameof(Especies));
+            EspeciesP = await cService.GetEspecieAsync();
+            OnPropertyChanged(nameof(EspeciesG));
 
-            foreach (var especies in Especies)
+            foreach (var especies in EspeciesP)
             {
-                Especies.Add(new Pet
+                EspeciesG.Add(new Pet
                 {
                     NomeEspecie = especies.NomeEspecie,
-                    IdEspecie = especies.IdEspecie + 1
+                    IdEspecie = especies.IdEspecie
                 });
             }
         }
 
         public async Task ObterSubEspecieAsync()
         {
-            SubEspecies = await cService.GetSubEspecieAsync();
-            OnPropertyChanged(nameof(SubEspecies));
+            SubEspeciesP = await cService.GetSubEspecieAsync();
+            OnPropertyChanged(nameof(SubEspeciesG));
 
-            foreach (var subespecies in SubEspecies)
+            foreach (var subespecies in SubEspeciesP)
             {
-                SubEspecies.Add(new Pet
-                {
-                    NomeSubEspecie = subespecies.NomeSubEspecie,
-                    IdSubespecie = subespecies.IdSubespecie
-                });
-            }
+                SubEspeciesG.Add(new Pet
+                    {
+                        NomeSubEspecie = subespecies.NomeSubEspecie,
+                        IdSubespecie = subespecies.IdSubespecie
+                    });                
+            }            
         }
 
         #endregion

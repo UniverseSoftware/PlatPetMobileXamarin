@@ -7,9 +7,9 @@
             <Label Text="Nome Pet" ></Label>
             <Entry Text="{Binding NomePet}"></Entry>
             <Label Text="Espécie"></Label>
-            <Picker Title="Espécie" ItemsSource="{Binding Especies}" ItemDisplayBinding="{Binding NomeEspecie}"/>
+            <Picker Title="Espécie" ItemsSource="{Binding EspeciesG}" ItemDisplayBinding="{Binding NomeEspecie}"/>
             <Label Text="SubEspécie"></Label>
-            <Picker Title="SubEspécie" ItemsSource="{Binding SubEspecies}" ItemDisplayBinding="{Binding NomeSubEspecie}"  SelectedItem="{Binding SubEspecie}"/> <!--Text="{Binding SubEspecie}"-->
+            <Picker Title="SubEspécie" ItemsSource="{Binding SubEspeciesG}" ItemDisplayBinding="{Binding NomeSubEspecie}"  SelectedItem="{Binding SubEspecie}"/> <!--Text="{Binding SubEspecie}"-->
             <Label Text="RG do Pet"></Label>
             <Entry Text="{Binding RG}"></Entry>
             <Label Text="Observação"></Label>

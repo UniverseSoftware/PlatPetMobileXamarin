@@ -10,17 +10,17 @@
             <Label Text="Serviço"/>
             <Entry IsEnabled="False"></Entry>
             <Label Text="Pet" />
-                <Picker Title="Selecione seu Pet" ItemsSource="{Binding Pets}"  ItemDisplayBinding="{Binding NomePet}"/>
+                <Picker Title="Selecione seu Pet" ItemsSource="{Binding PetsG}"  ItemDisplayBinding="{Binding NomePet}"/>
 
 
 
                 <Label Text="Tipo de Serviço" />
-            <Picker Title="Selecione o tipo de Serviço" ItemsSource="{Binding Servicos}"  ItemDisplayBinding="{Binding NomeServico}">
+                <Picker Title="Selecione o tipo de Serviço" ItemsSource="{Binding ServComEmp}"  ItemDisplayBinding="{Binding VlServicoEmpresa, NomeServico}">
                 
             </Picker>
             <Label Text="Valor Total"/>
             <Label Text="Forma de Pagamento"/>
-                <Picker Title="Forma de Pagamento" ItemsSource="{Binding Pag}" ItemDisplayBinding="{Binding DescPagamento}"/>
+                <Picker Title="Forma de Pagamento" ItemsSource="{Binding PagG}" ItemDisplayBinding="{Binding DescPagamento}"/>
                 <Button Text="Confirmar" CornerRadius="100" BackgroundColor="#E28249" IsEnabled="True"></Button>
         </StackLayout>
         </ScrollView>
