@@ -10,7 +10,7 @@
             <Label Text="Serviço"/>
             <Entry IsEnabled="False"></Entry>
             <Label Text="Pet" />
-                <Picker Title="Selecione seu Pet" ItemsSource="{Binding PetsG}"  ItemDisplayBinding="{Binding NomePet}"/>
+                <Picker Title="Selecione seu Pet" ItemsSource="{Binding PetsG}"  ItemDisplayBinding="{Binding NomePet}" SelectedItem="{Binding Pets}"/>
 
 
 

@@ -3,5 +3,12 @@
 	<uses-sdk android:minSdkVersion="19" android:targetSdkVersion="27" />
 	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-	<application android:label="PlatPet.Android" android:icon="@drawable/iconepng"></application>
+	<uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+	<uses-permission android:name="android.permission.INTERNET" />
+	<application android:label="PlatPet.Android" android:icon="@drawable/iconepng">
+		<meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyDFGbJYFV7PaD5ek_HrMjEjgZ1ltRfw3E4" />
+	</application>
 </manifest>

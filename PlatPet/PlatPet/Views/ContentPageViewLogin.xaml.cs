@@ -28,7 +28,7 @@ namespace PlatPet.Views
 
         public async void Entrar()
         {
-            await Navigation.PushAsync(new ContentPageViewApresentacaoB());
+            await Navigation.PushAsync(new TabbedPageViewTelaInicial());
         }
     }
 }

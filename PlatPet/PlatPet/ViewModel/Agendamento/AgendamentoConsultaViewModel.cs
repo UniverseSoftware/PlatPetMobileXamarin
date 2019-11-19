@@ -169,5 +169,19 @@ namespace PlatPet.ViewModel.Agendamento
                 });
             }
         }
+
+        public Pet Pets
+        {
+            get { return pet; }
+            set
+            {
+                if (value != null)
+                {
+                    pet = value;
+                    OnPropertyChanged();
+                    this.pet.IdSubespecie = pet.IdSubespecie;
+                }
+            }
+        }
     }
 }

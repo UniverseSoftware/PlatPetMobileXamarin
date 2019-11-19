@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.Forms.Maps;
 using Xamarin.Forms.Xaml;
 
 namespace PlatPet.Views
@@ -16,6 +17,9 @@ namespace PlatPet.Views
         public TabbedPageViewTelaInicial()
         {
             InitializeComponent();
+
+            var mapa = new Map(MapSpan.FromCenterAndRadius(new Position(-23.4945044, -46.5909981), Distance.FromKilometers(1)));
+            MapContainer.Children.Add(mapa);
 
         }
         async void Banho(object sender, EventArgs e)

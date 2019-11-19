@@ -34,6 +34,11 @@ namespace PlatPet.Services.Agendamento
             throw new NotImplementedException();
         }
 
+        public Task<ObservableCollection<UsuarioPessoa>> GetUsuarioPessoaAsync(UsuarioPessoa c)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<UsuarioPessoa> GetUsuarioPessoaAsync()
         {
             throw new NotImplementedException();

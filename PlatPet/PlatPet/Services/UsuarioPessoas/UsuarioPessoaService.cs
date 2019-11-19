@@ -11,6 +11,7 @@ namespace PlatPet.Services.UsuarioPessoas
     {
         private readonly IRequest _request;
         private const string ApiUrlBase = "http://universesoftware2019.somee.com/api/CadUsuarios";
+        private const string ApiUrlBaseUsuario = "http://universesoftware2019.somee.com/api/Usuarios";
 
         public UsuarioPessoaService()
         {
@@ -24,10 +25,10 @@ namespace PlatPet.Services.UsuarioPessoas
             return new UsuarioPessoa() { IdUsuario = usuarioId };
         }
 
-        public async Task<UsuarioPessoa> GetUsuarioPessoaAsync()
+        public async Task<ObservableCollection<UsuarioPessoa>> GetUsuarioPessoaAsync(UsuarioPessoa c)
         {
-            UsuarioPessoa usuarioPessoa = await
-                _request.GetAsync<UsuarioPessoa>(ApiUrlBase);
+            ObservableCollection<UsuarioPessoa> usuarioPessoa = await
+                _request.GetAsync<ObservableCollection<UsuarioPessoa>>(ApiUrlBaseUsuario);
 
             return usuarioPessoa;
         }

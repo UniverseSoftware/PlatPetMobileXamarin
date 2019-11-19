@@ -16,15 +16,17 @@ namespace PlatPet.ViewModel.Login
         private UsuarioPessoa usuarioPessoa;
         private IUsuarioPessoaService uService = new UsuarioPessoaService();
         public ICommand EntrarCommand { get; set; }
-        public UsuarioPessoa Usuario
-        {
-            get; set;
-        }
 
         public LoginViewModel()
         {
-            Usuario = new UsuarioPessoa();
             RegistrarCommands();
+            usuarioPessoa = new UsuarioPessoa();
+            Usuario = new ObservableCollection<UsuarioPessoa>();
+        }
+
+        public ObservableCollection<UsuarioPessoa> Usuario
+        {
+            get; set;
         }
 
         private void RegistrarCommands()
@@ -37,19 +39,9 @@ namespace PlatPet.ViewModel.Login
 
         public async Task ConsultarUsuario()
         {
-            Usuario = await uService.GetUsuarioPessoaAsync();
-            OnPropertyChanged(nameof(Usuario));
+            Usuario = await uService.GetUsuarioPessoaAsync(usuarioPessoa);
+            OnPropertyChanged(nameof(usuarioPessoa));
             Validacao();
-        }
-
-        public string Senha
-        {
-            get { return this.usuarioPessoa.PassUsuario; }
-            set
-            {
-                this.usuarioPessoa.PassUsuario = value;
-                OnPropertyChanged();
-            }
         }
 
         public string User
@@ -62,7 +54,15 @@ namespace PlatPet.ViewModel.Login
             }
         }
 
-       
+        public string Senha
+        {
+            get { return this.usuarioPessoa.PassUsuario; }
+            set
+            {
+                this.usuarioPessoa.PassUsuario = value;
+                OnPropertyChanged();
+            }
+        }
 
         public void Validacao()
         {

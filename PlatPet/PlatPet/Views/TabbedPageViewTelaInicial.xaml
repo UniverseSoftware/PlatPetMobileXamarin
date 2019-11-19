@@ -52,6 +52,10 @@
                              Constant=-100}"></Button>
         </RelativeLayout>
     </ContentPage>
-    <ContentPage Title="Mapa" />
-  <ContentPage Title="Favoritos" />
+    <ContentPage Title="Mapa" >
+        <StackLayout x:Name="MapContainer">
+
+        </StackLayout>
+    </ContentPage>
+    <ContentPage Title="Favoritos" />
 </TabbedPage>
