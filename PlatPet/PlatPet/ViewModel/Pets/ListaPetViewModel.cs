@@ -31,5 +31,18 @@ namespace PlatPet.ViewModel.Pets
             Pets = await cService.GetPetAsync();
             OnPropertyChanged(nameof(Pets));
         }
+
+        public Pet SelPet
+        {
+            get { return pet; }
+            set
+            {
+                if (value != null)
+                {
+                    pet = value;
+                    MessagingCenter.Send<Pet>(pet, "Mostrar");
+                }
+            }
+        }
     }
 }

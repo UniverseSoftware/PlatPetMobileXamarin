@@ -4,8 +4,7 @@
              x:Class="PlatPet.Views.Visualizacao.ContentListViewPet">
     <ContentPage.Content>
         <StackLayout Padding="10, 0, 0, 0" VerticalOptions="FillAndExpand" BackgroundColor="#FFFCCF">
-            <ListView x:Name="listView" HasUnevenRows="True" ItemsSource="{Binding Pets}" 
-                     >
+            <ListView x:Name="listView" HasUnevenRows="True" ItemsSource="{Binding Pets}" SelectedItem="{Binding SelPet}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

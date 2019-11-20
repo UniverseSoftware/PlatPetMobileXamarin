@@ -21,6 +21,19 @@ namespace PlatPet.ViewModel.Pets
             RegistrarCommands();
             Pet = new Pet();
 
+            Pets = new ObservableCollection<Pet>();
+            EspeciesP = new ObservableCollection<Pet>();
+            EspeciesG = new ObservableCollection<Pet>();
+            SubEspeciesP = new ObservableCollection<Pet>();
+            SubEspeciesG = new ObservableCollection<Pet>();
+        }
+
+        public CadastroPetViewModel(Pet pet)
+        {
+            RegistrarCommands();
+            Pet = new Pet();
+
+            this.Pet = pet;
 
             Pets = new ObservableCollection<Pet>();
             EspeciesP = new ObservableCollection<Pet>();

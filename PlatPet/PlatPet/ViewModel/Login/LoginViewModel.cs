@@ -39,7 +39,8 @@ namespace PlatPet.ViewModel.Login
 
         public async Task ConsultarUsuario()
         {
-            Usuario = await uService.GetUsuarioPessoaAsync(usuarioPessoa);
+            string senha = usuarioPessoa.PassUsuario;
+            Usuario = await uService.GetUsuarioPessoaAsync(usuarioPessoa.UserUsuario);
             OnPropertyChanged(nameof(usuarioPessoa));
             Validacao();
         }
@@ -66,7 +67,9 @@ namespace PlatPet.ViewModel.Login
 
         public void Validacao()
         {
-            if (usuarioPessoa.IdUsuario != null || usuarioPessoa.IdUsuario == 0)
+            //FormsAuthentications.HashPasswordForStoringInConfigFile(usuarioPessoa.PassUsuario, "MD5");
+
+            if (usuarioPessoa.IdUsuario == null || usuarioPessoa.IdUsuario == 0)
             {
                 MessagingCenter.Send<string>("Usuário e/ou Senha inválido.", "InformacaoCRUD");
             }

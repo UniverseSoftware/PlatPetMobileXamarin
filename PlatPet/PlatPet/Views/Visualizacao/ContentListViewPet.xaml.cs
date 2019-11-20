@@ -1,5 +1,6 @@
 ﻿using PlatPet.Models;
 using PlatPet.ViewModel.Pets;
+using PlatPet.Views.Cadastros;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,6 +30,11 @@ namespace PlatPet.Views.Visualizacao
             Device.BeginInvokeOnMainThread(async () =>
             {
                 await listaPetViewModel.ObterPetAsync();
+            });
+
+            MessagingCenter.Subscribe<Pet>(this, "Mostrar", async (pet) =>
+            {
+                await Navigation.PushAsync(new ContentPageCadastroPetView(pet, (pet.IdPet == 0) ? "Novo Pet" : "Alterar Pet"));
             });
         }
 
