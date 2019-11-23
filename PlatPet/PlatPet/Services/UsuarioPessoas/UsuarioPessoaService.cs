@@ -26,11 +26,11 @@ namespace PlatPet.Services.UsuarioPessoas
             return new UsuarioPessoa() { IdUsuario = usuarioId };
         }
 
-        public async Task<ObservableCollection<UsuarioPessoa>> GetUsuarioPessoaAsync(string usuario)
+        public async Task<UsuarioPessoa> GetUsuarioPessoaAsync(string usuario)
         {
             string urlComplementar = string.Format("/{0}", usuario);
-            ObservableCollection<UsuarioPessoa> usuarioPessoa = await
-                _request.GetAsync<ObservableCollection<UsuarioPessoa>>(ApiUrlBaseLogin + urlComplementar);
+            UsuarioPessoa usuarioPessoa = await
+                _request.GetAsync<UsuarioPessoa>(ApiUrlBaseLogin + urlComplementar);
 
             return usuarioPessoa;
         }

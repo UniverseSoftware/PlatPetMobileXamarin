@@ -40,7 +40,7 @@
       "{ConstraintExpression Type=RelativeToParent,
                              Property=Height,
                              Factor=0.53,
-                             Constant=-100}" />
+                             Constant=-100}" Clicked="Cadastro"/>
 
                 <Button x:Name="EntarButton" Text="Entrar" BorderRadius="20" WidthRequest="180" HeightRequest="50" BackgroundColor="#CF7B47"
                         RelativeLayout.XConstraint =

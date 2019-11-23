@@ -23,12 +23,35 @@ namespace PlatPet.Views
 
         public void Login(object sender, EventArgs e)
         {
-            Entrar();
+            //Entrar();
         }
 
         public async void Entrar()
         {
-            await Navigation.PushAsync(new TabbedPageViewTelaInicial());
+            await Navigation.PushModalAsync(new MasterDetailsPageView());
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            MessagingCenter.Subscribe<string>(this, "InformacaoCRUD", async (msg) =>
+            {
+                await DisplayAlert("Informação", msg, "OK");
+                if (msg == "Bem Vindo!")
+                {
+                    await Navigation.PushModalAsync(new MasterDetailsPageView());
+                }
+            });
+        }
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();            
+            MessagingCenter.Unsubscribe<string>(this, "InformacaoCRUD");
+        }
+
+        async void Cadastro(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new MasterDetailsPageView());
         }
     }
 }

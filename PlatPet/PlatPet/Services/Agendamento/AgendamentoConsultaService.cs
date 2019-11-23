@@ -34,7 +34,7 @@ namespace PlatPet.Services.Agendamento
             throw new NotImplementedException();
         }
 
-        public Task<ObservableCollection<UsuarioPessoa>> GetUsuarioPessoaAsync(UsuarioPessoa c)
+        public Task<UsuarioPessoa> GetUsuarioPessoaAsync(string usuario)
         {
             throw new NotImplementedException();
         }
@@ -163,11 +163,6 @@ namespace PlatPet.Services.Agendamento
         }
 
         public Task<Servico> DeleteServicoAsync(int servicoId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<ObservableCollection<UsuarioPessoa>> GetUsuarioPessoaAsync(string usuario)
         {
             throw new NotImplementedException();
         }

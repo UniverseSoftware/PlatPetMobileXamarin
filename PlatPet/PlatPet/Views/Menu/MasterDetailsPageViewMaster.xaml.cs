@@ -52,15 +52,15 @@ namespace PlatPet.Views
                     IconSource = "calendario.png",}
                 ,
 
-                new MasterDetailsPageViewMenuItem {Id = 0, Title = "Usuário",
-                    TargetType = typeof(ContentPageCadastroUsuarioView),}
+                //new MasterDetailsPageViewMenuItem {Id = 0, Title = "Usuário",
+                //    TargetType = typeof(ContentPageCadastroUsuarioView),}
                 
-                ,
+                //,
 
-                new MasterDetailsPageViewMenuItem {Id = 0, Title = "Login",
-                    TargetType = typeof(ContentPageViewLogin),}
+                //new MasterDetailsPageViewMenuItem {Id = 0, Title = "Login",
+                //    TargetType = typeof(ContentPageViewLogin),}
 
-                ,
+                //,
 
                 new MasterDetailsPageViewMenuItem {Id = 0, Title = "Forma Pagamento",
                     TargetType = typeof(ContentPageCadastroFormaPagamentoView),

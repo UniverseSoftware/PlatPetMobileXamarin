@@ -1,13 +1,11 @@
 ﻿using PlatPet.Models;
 using PlatPet.Services.UsuarioPessoas;
 using PlatPet.Views;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace PlatPet.ViewModel.Login
 {
@@ -21,13 +19,13 @@ namespace PlatPet.ViewModel.Login
         {
             RegistrarCommands();
             usuarioPessoa = new UsuarioPessoa();
-            Usuario = new ObservableCollection<UsuarioPessoa>();
+            //Usuario = new ObservableCollection<UsuarioPessoa>();
         }
 
-        public ObservableCollection<UsuarioPessoa> Usuario
-        {
-            get; set;
-        }
+        //public ObservableCollection<UsuarioPessoa> Usuario
+        //{
+        //    get; set;
+        //}
 
         private void RegistrarCommands()
         {
@@ -36,11 +34,11 @@ namespace PlatPet.ViewModel.Login
                 await ConsultarUsuario();
             });
         }
-
+        string senha;
         public async Task ConsultarUsuario()
         {
-            string senha = usuarioPessoa.PassUsuario;
-            Usuario = await uService.GetUsuarioPessoaAsync(usuarioPessoa.UserUsuario);
+            senha = usuarioPessoa.PassUsuario;
+            usuarioPessoa = await uService.GetUsuarioPessoaAsync(usuarioPessoa.UserUsuario);
             OnPropertyChanged(nameof(usuarioPessoa));
             Validacao();
         }
@@ -67,17 +65,30 @@ namespace PlatPet.ViewModel.Login
 
         public void Validacao()
         {
-            //FormsAuthentications.HashPasswordForStoringInConfigFile(usuarioPessoa.PassUsuario, "MD5");
-
-            if (usuarioPessoa.IdUsuario == null || usuarioPessoa.IdUsuario == 0)
+            string crip = MD5Hash(senha);
+            if (usuarioPessoa.IdUsuario == null || usuarioPessoa.IdUsuario == 0 || senha != crip)
             {
                 MessagingCenter.Send<string>("Usuário e/ou Senha inválido.", "InformacaoCRUD");
             }
             else
             {
                 ContentPageViewLogin login = new ContentPageViewLogin();
-                login.Entrar();
+                MessagingCenter.Send<string>("Bem Vindo!", "InformacaoCRUD");
+                
             }
+        }                
+        
+        public static string MD5Hash(string input)
+        {
+            StringBuilder hash = new StringBuilder();
+            MD5CryptoServiceProvider md5provider = new MD5CryptoServiceProvider();
+            byte[] bytes = md5provider.ComputeHash(new UTF8Encoding().GetBytes(input));
+
+            for (int i = 0; i < bytes.Length; i++)
+            {
+                hash.Append(bytes[i].ToString("x2"));
+            }
+            return hash.ToString();
         }
     }
 }

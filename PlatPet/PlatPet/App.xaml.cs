@@ -14,12 +14,12 @@ namespace PlatPet
         {
             InitializeComponent();
 
-
+            
             MainPage = new NavigationPage(new MasterDetailsPageView());
             //MainPage = new ContentListViewPet();
 
-            //MainPage = new ContentPageViewLogin();
-            MainPage = new MasterDetailsPageView();
+            MainPage = new ContentPageViewLogin();
+            //MainPage = new MasterDetailsPageView();
 
         }
 

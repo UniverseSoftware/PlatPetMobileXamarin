@@ -9,7 +9,7 @@ namespace PlatPet.Services.UsuarioPessoas
 {
     public interface IUsuarioPessoaService
     {
-        Task <ObservableCollection<UsuarioPessoa>> GetUsuarioPessoaAsync(string usuario);
+        Task <UsuarioPessoa> GetUsuarioPessoaAsync(string usuario);
 
         Task<UsuarioPessoa> PostUsuarioPessoaAsync(UsuarioPessoa c);
 
