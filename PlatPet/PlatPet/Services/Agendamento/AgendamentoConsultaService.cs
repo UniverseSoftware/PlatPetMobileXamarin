@@ -58,7 +58,7 @@ namespace PlatPet.Services.Agendamento
 
         #region Pet
 
-        public async Task<ObservableCollection<Pet>> GetPetAsync()
+        public async Task<ObservableCollection<Pet>> GetPetAsync(Pet p)
         {
             ObservableCollection<Pet> pet = await
                 _request.GetAsync<ObservableCollection<Pet>>(ApiUrlBasePet);

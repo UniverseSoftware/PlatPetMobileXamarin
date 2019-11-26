@@ -9,7 +9,7 @@ namespace PlatPet.Services.Pets
 {
     public interface IPetService
     {
-        Task<ObservableCollection<Pet>> GetPetAsync();
+        Task<ObservableCollection<Pet>> GetPetAsync(Pet p);
 
         Task<ObservableCollection<Pet>> GetEspecieAsync();
 

@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace PlatPet.ViewModel.Agendamento
 {
@@ -45,7 +46,7 @@ namespace PlatPet.ViewModel.Agendamento
             get; set;
         }
 
-        public ObservableCollection<Servico> ServicosG
+        public ObservableCollection<ServicoEmpresas> ServicosG
         {
             get; set;
         }
@@ -72,23 +73,27 @@ namespace PlatPet.ViewModel.Agendamento
             PagP = new ObservableCollection<FormaPagamento>();
             PagG = new ObservableCollection<FormaPagamento>();
             ServicosP = new ObservableCollection<Servico>();
-            ServicosG = new ObservableCollection<Servico>();
+            ServicosG = new ObservableCollection<ServicoEmpresas>();
             ServicosEmpP = new ObservableCollection<ServicoEmpresas>();
             ServicosEmpG = new ObservableCollection<ServicoEmpresas>();
             ServComEmp = new ObservableCollection<ServicosComEmpresa>();
+            pet = new Pet();
+            int id = Convert.ToInt32(Application.Current.Properties["PessoaId"].ToString());
         }
 
         public async Task Popular()
         {
             ObterPetAsync();
             ObterFormaPagamentoAsync();
-            ObterServicoAsync();
-            ObterServEmpAsync();
+            ObterServComEmp();
+            //ObterServicoAsync();
+            //ObterServEmpAsync();
         }
 
         public async Task ObterPetAsync()
         {
-            PetsP = await pService.GetPetAsync();
+            pet.IdPessoa = Convert.ToInt32(Application.Current.Properties["PessoaId"].ToString());
+            PetsP = await pService.GetPetAsync(pet);
             OnPropertyChanged(nameof(PetsG));
 
             foreach(var pets in PetsP)
@@ -116,56 +121,61 @@ namespace PlatPet.ViewModel.Agendamento
             }
         }
 
-        public async Task ObterServicoAsync()
-        {
-            ServicosP = await sService.GetServicoAsync();
-            OnPropertyChanged(nameof(ServicosG));
+        //public async Task ObterServicoAsync()
+        //{
+        //    ServicosP = await sService.GetServicoAsync();
+        //    OnPropertyChanged(nameof(ServicosG));
 
-            foreach (var services in ServicosP)
-            {
-                ServicosG.Add(new Servico
-                {
-                    IdServico = services.IdServico,
-                    NomeServico = services.NomeServico 
-                });
-            }
-        }
+        //    foreach (var services in ServicosP)
+        //    {
+        //        ServicosG.Add(new Servico
+        //        {
+        //            IdServico = services.IdServico,
+        //            NomeServico = services.NomeServico
+        //        });
+        //    }
+        //}
 
-        public async Task ObterServEmpAsync()
-        {
-            ServicosEmpP = await seService.GetServicoEmpresaAsync();
-            OnPropertyChanged(nameof(ServicosG));
+        //public async Task ObterServEmpAsync()
+        //{
+        //    ServicosEmpP = await seService.GetServicoEmpresaAsync();
+        //    OnPropertyChanged(nameof(ServicosG));
 
-            foreach(var servEmp in ServicosEmpP)
-            {
-                ServicosEmpG.Add(new ServicoEmpresas
-                {
-                    IdEmpresa = servEmp.IdEmpresa,
-                    IdServico = servEmp.IdServico,
-                    IdServicoEmpresa = servEmp.IdServicoEmpresa,
-                    VlServicoEmpresa = servEmp.VlServicoEmpresa
-                });
-            }
-        }
+        //    foreach(var servEmp in ServicosEmpP)
+        //    {
+        //        ServicosEmpG.Add(new ServicoEmpresas
+        //        {
+        //            IdEmpresa = servEmp.IdEmpresa,
+        //            IdServico = servEmp.IdServico,
+        //            IdServicoEmpresa = servEmp.IdServicoEmpresa,
+        //            NomeServico = string.Format("{0} - {1}", servEmp.IdServico, servEmp.NomeServico),
+        //            VlServicoEmpresa = servEmp.VlServicoEmpresa
+        //        });
+        //    }
+        //}
 
         public async Task ObterServComEmp()
         {
-            foreach (var services in ServicosP)
-            {
-                ServComEmp.Add(new ServicosComEmpresa
-                {
-                    IdServico = services.IdServico,
-                    NomeServico = services.NomeServico
-                });
-            }
+            ServicosG = await seService.GetServicoEmpresaAsync();
+            OnPropertyChanged(nameof(ServComEmp));
 
-            foreach (var servEmp in ServicosEmpP)
+            //foreach (var services in ServicosP)
+            //{
+            //    ServComEmp.Add(new ServicosComEmpresa
+            //    {
+            //        IdServico = services.IdServico,
+            //        NomeServico = services.NomeServico
+            //    });
+            //}
+
+            foreach (var servEmp in ServicosG)
             {
                 ServComEmp.Add(new ServicosComEmpresa
                 {
                     IdEmpresa = servEmp.IdEmpresa,
                     IdServicoEmpresa = servEmp.IdServicoEmpresa,
-                    VlServicoEmpresa = servEmp.VlServicoEmpresa
+                    VlServicoEmpresa = servEmp.VlServicoEmpresa,
+                    NomeServico = string.Format("{0} - {1}", servEmp.IdServico, servEmp.NomeServico)
                 });
             }
         }

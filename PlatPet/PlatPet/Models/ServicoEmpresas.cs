@@ -9,6 +9,7 @@ namespace PlatPet.Models
         public int IdServicoEmpresa { get; set; }
         public int IdEmpresa { get; set; }
         public int IdServico { get; set; }
-        public string VlServicoEmpresa { get; set; }        
+        public string VlServicoEmpresa { get; set; }
+        public string NomeServico { get; set; }
     }
 }

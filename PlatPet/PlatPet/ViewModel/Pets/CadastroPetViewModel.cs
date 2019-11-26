@@ -11,7 +11,6 @@ namespace PlatPet.ViewModel.Pets
     public class CadastroPetViewModel : BaseViewModel
     {
         private IPetService uService = new PetService();
-
         private Pet Pet;
         public ICommand GravarCommand { get; set; }
         public ICommand NovoCommand { get; set; }
@@ -54,7 +53,7 @@ namespace PlatPet.ViewModel.Pets
         private async Task GravarAsync()
         {
             var ehNovoUsuario = (Pet.IdPet == 0 ? true : false);
-            Pet.IdPessoa = 18;
+            Pet.IdPessoa = Convert.ToInt32(Application.Current.Properties["PessoaId"].ToString());
             await uService.PostPetAsync(Pet);
 
             //Chamada ao método que limpa os campos da tela
@@ -169,7 +168,8 @@ namespace PlatPet.ViewModel.Pets
 
         public async Task ObterPetAsync()
         {
-            Pets = await cService.GetPetAsync();
+            pet.IdPessoa = Convert.ToInt32(Application.Current.Properties["PessoaId"].ToString());
+            Pets = await cService.GetPetAsync(pet);
             OnPropertyChanged(nameof(Pets));
         }
 

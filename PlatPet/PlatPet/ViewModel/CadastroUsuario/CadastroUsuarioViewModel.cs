@@ -38,6 +38,7 @@ namespace PlatPet.ViewModel.CadastroUsuario
             var ehNovoUsuario = (UsuarioPessoa.IdEP == 0 ? true : false);
             UsuarioPessoa.TipoUsuario = 2;
             UsuarioPessoa.StatusUsuario = 1;
+            UsuarioPessoa.IdUsuario = 0;
             await uService.PostUsuarioPessoaAsync(UsuarioPessoa);
 
             //Chamada ao método que limpa os campos da tela

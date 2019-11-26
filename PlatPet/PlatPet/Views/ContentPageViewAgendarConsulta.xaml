@@ -15,7 +15,7 @@
 
 
                 <Label Text="Tipo de Serviço" />
-                <Picker Title="Selecione o tipo de Serviço" ItemsSource="{Binding ServComEmp}"  ItemDisplayBinding="{Binding VlServicoEmpresa, NomeServico}">
+                <Picker Title="Selecione o tipo de Serviço" ItemsSource="{Binding ServComEmp}"  ItemDisplayBinding="{Binding NomeServico}">
                 
             </Picker>
             <Label Text="Valor Total"/>

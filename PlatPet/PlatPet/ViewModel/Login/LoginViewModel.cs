@@ -65,16 +65,26 @@ namespace PlatPet.ViewModel.Login
 
         public void Validacao()
         {
+            if (usuarioPessoa == null)
+            {
+                usuarioPessoa = new UsuarioPessoa();
+            }
+
             string crip = MD5Hash(senha);
-            if (usuarioPessoa.IdUsuario == null || usuarioPessoa.IdUsuario == 0 || senha != crip)
+            //crip = crip.ToUpper();            
+
+            if (usuarioPessoa.IdUsuario == null || usuarioPessoa.IdUsuario == 0 || usuarioPessoa.PassUsuario != crip)
             {
                 MessagingCenter.Send<string>("Usuário e/ou Senha inválido.", "InformacaoCRUD");
+                AtualizarPropriedadesParaVisao();
             }
             else
             {
                 ContentPageViewLogin login = new ContentPageViewLogin();
                 MessagingCenter.Send<string>("Bem Vindo!", "InformacaoCRUD");
-                
+                Application.Current.Properties["PessoaId"] = usuarioPessoa.IdEP;
+                Application.Current.Properties["PessoaId"] = usuarioPessoa.IdUsuario;
+                Application.Current.Properties["Nome"] = usuarioPessoa.NomeEP;
             }
         }                
         
@@ -89,6 +99,15 @@ namespace PlatPet.ViewModel.Login
                 hash.Append(bytes[i].ToString("x2"));
             }
             return hash.ToString();
+        }
+
+        private void AtualizarPropriedadesParaVisao()
+        {
+         
+                this.User = string.Empty;
+                this.Senha = string.Empty;         
+                this.usuarioPessoa = new UsuarioPessoa();
+       
         }
     }
 }

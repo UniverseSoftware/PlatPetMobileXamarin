@@ -51,7 +51,7 @@ namespace PlatPet.Views
 
         async void Cadastro(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new MasterDetailsPageView());
+            await Navigation.PushModalAsync(new ContentPageCadastroUsuarioView());
         }
     }
 }

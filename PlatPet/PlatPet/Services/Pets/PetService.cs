@@ -13,6 +13,7 @@ namespace PlatPet.Services.Pets
         private const string ApiUrlBase = "http://universesoftware2019.somee.com/api/Pets";
         private const string ApiUrlBaseEspecie = "http://universesoftware2019.somee.com/api/Especies";
         private const string ApiUrlBaseSubEspecie = "http://universesoftware2019.somee.com/api/SubEspecies";
+        private const string ApiUrlBasePessoa = "http://universesoftware2019.somee.com/api/PetsPessoa";
 
         public PetService()
         {
@@ -26,10 +27,11 @@ namespace PlatPet.Services.Pets
             return new Pet() { IdPet = petId };
         }
 
-        public async Task<ObservableCollection<Pet>> GetPetAsync()
+        public async Task<ObservableCollection<Pet>> GetPetAsync(Pet p)
         {
+            string urlComplementar = string.Format("/{0}", p.IdPessoa);
             ObservableCollection<Pet> pet = await
-                _request.GetAsync<ObservableCollection<Pet>>(ApiUrlBase);
+                _request.GetAsync<ObservableCollection<Pet>>(ApiUrlBasePessoa + urlComplementar);
 
             return pet;
         }
