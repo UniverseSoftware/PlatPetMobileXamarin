@@ -14,7 +14,7 @@ namespace PlatPet.ViewModel.Pets
     public class ListaPetViewModel : BaseViewModel
     {
         private Pet pet;
-
+        public ICommand NovoCommand { get; set; }
         private IPetService cService = new PetService();
         public ObservableCollection<Pet> Pets
         {
@@ -25,7 +25,18 @@ namespace PlatPet.ViewModel.Pets
         {
             Pets = new ObservableCollection<Pet>();
             pet = new Pet();
+            RegistrarCommands();
         }
+
+
+        private void RegistrarCommands()
+        {
+            NovoCommand = new Command(() =>
+            {
+                MessagingCenter.Send<Pet>(new Pet(), "Mostrar");
+            });
+        }
+
 
         public async Task ObterPetAsync()
         {            

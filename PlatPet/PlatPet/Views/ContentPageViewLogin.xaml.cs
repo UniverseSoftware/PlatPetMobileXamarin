@@ -35,12 +35,13 @@ namespace PlatPet.Views
         {
             base.OnAppearing();
             MessagingCenter.Subscribe<string>(this, "InformacaoCRUD", async (msg) =>
-            {
-                await DisplayAlert("Informação", msg, "OK");
+            {                
                 if (msg == "Bem Vindo!")
                 {
                     await Navigation.PushModalAsync(new MasterDetailsPageView());
                 }
+                else
+                    await DisplayAlert("Informação", msg, "OK");
             });
         }
         protected override void OnDisappearing()

@@ -33,13 +33,7 @@ namespace PlatPet.Views
                 new MasterDetailsPageViewMenuItem {Id = 0, Title = "Menu",
                     TargetType = typeof(TabbedPageViewTelaInicial)}
 
-                ,
-
-                new MasterDetailsPageViewMenuItem {Id = 0, Title = "Cadastro Pets",
-                    TargetType = typeof(ContentPageCadastroPetView),
-                    IconSource = "pata.png",}
-
-                ,
+                ,                
 
                 new MasterDetailsPageViewMenuItem {Id = 0, Title = "Lista Pets",
                     TargetType = typeof(ContentListViewPet),
@@ -51,16 +45,6 @@ namespace PlatPet.Views
                     TargetType = typeof(ContentPageViewAgendarConsulta),
                     IconSource = "calendario.png",}
                 ,
-
-                //new MasterDetailsPageViewMenuItem {Id = 0, Title = "Usuário",
-                //    TargetType = typeof(ContentPageCadastroUsuarioView),}
-                
-                //,
-
-                //new MasterDetailsPageViewMenuItem {Id = 0, Title = "Login",
-                //    TargetType = typeof(ContentPageViewLogin),}
-
-                //,
 
                 new MasterDetailsPageViewMenuItem {Id = 0, Title = "Forma Pagamento",
                     TargetType = typeof(ContentPageCadastroFormaPagamentoView),
