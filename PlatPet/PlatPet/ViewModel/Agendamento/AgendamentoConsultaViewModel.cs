@@ -66,6 +66,21 @@ namespace PlatPet.ViewModel.Agendamento
             get; set;
         }
 
+        public AgendamentoConsultaViewModel(Empresa empresa)
+        {
+            PetsP = new ObservableCollection<Pet>();
+            PetsG = new ObservableCollection<Pet>();
+            PagP = new ObservableCollection<FormaPagamento>();
+            PagG = new ObservableCollection<FormaPagamento>();
+            ServicosP = new ObservableCollection<Servico>();
+            ServicosG = new ObservableCollection<ServicoEmpresas>();
+            ServicosEmpP = new ObservableCollection<ServicoEmpresas>();
+            ServicosEmpG = new ObservableCollection<ServicoEmpresas>();
+            ServComEmp = new ObservableCollection<ServicosComEmpresa>();
+            pet = new Pet();
+            int id = Convert.ToInt32(Application.Current.Properties["PessoaId"].ToString());
+        }
+
         public AgendamentoConsultaViewModel()
         {
             PetsP = new ObservableCollection<Pet>();

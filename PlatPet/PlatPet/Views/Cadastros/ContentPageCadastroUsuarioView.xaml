@@ -6,7 +6,7 @@
         <ScrollView>
             <StackLayout BackgroundColor="#FFFCCF">
                 <Label Text="Usuario"></Label>
-                <Entry Text="{Binding Usuario}" WidthRequest="20" ></Entry>
+                <Entry Text="{Binding Usuario}"></Entry>
                 <Label Text="Senha"></Label>
                 <Entry Text="{Binding Senha}" Keyboard="Default" IsPassword="True" ></Entry>
                 <Label Text="Nome"></Label>

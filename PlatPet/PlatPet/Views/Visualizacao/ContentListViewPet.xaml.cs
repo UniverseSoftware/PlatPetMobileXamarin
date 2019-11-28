@@ -34,12 +34,7 @@ namespace PlatPet.Views.Visualizacao
 
             MessagingCenter.Subscribe<Pet>(this, "Mostrar", async (pet) =>
             {
-                await Navigation.PushAsync(new ContentPageCadastroPetView(pet, (pet.IdPet == 0) ? "Novo Pet" : "Alterar Pet"));
-            });
-
-            MessagingCenter.Subscribe<Pet>(this, "Mostrar", async (pet) =>
-            {
-                await Navigation.PushAsync(new ContentPageCadastroPetView(pet, (pet.IdPet == 0) ? "Novo Pet" : "Alterar Pet"));
+                await Navigation.PushAsync(new ContentPageCadastroPetView(pet, (pet.IdPet == 0) ? "Agendamento" : "Agendamento"));
             });
         }
 

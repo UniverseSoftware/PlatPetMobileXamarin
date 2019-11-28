@@ -27,6 +27,7 @@ namespace PlatPet.Views
 
         public MasterDetailsPageViewMaster()
         {
+            Icon = "inconepng.png";
             InitializeComponent();
             OpcoesMenu = new[] 
             {
@@ -43,6 +44,11 @@ namespace PlatPet.Views
 
                 new MasterDetailsPageViewMenuItem {Id = 0, Title = "Agenda de Consultas",
                     TargetType = typeof(ContentPageViewAgendarConsulta),
+                    IconSource = "calendario.png",}
+                ,
+
+                new MasterDetailsPageViewMenuItem {Id = 0, Title = "Lista de Empresas",
+                    TargetType = typeof(ContentListViewEmpresas),
                     IconSource = "calendario.png",}
                 ,
 
