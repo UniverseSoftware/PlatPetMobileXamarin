@@ -11,6 +11,7 @@ namespace PlatPet.Services.Empresas
     {
         private readonly IRequest _request;
         private const string ApiUrlBase = "http://universesoftware2019.somee.com/api/Empresas";
+        private const string ApiUrlBaseServico = "http://universesoftware2019.somee.com/api/ServicoEmpresas";
 
         public EmpresaService()
         {
@@ -32,6 +33,14 @@ namespace PlatPet.Services.Empresas
             return empresa;
         }
 
+        public async Task<ObservableCollection<Empresa>> GetServEmpresaAsync()
+        {
+            ObservableCollection<Empresa> empresa = await
+                 _request.GetAsync<ObservableCollection<Empresa>>(ApiUrlBaseServico);
+
+            return empresa;
+        }
+
         public async Task<Empresa> PostEmpresaAsync(Empresa e)
         {
             if (e.IdEmpresa == 0)
@@ -48,6 +57,6 @@ namespace PlatPet.Services.Empresas
             string urlComplementar = string.Format("/{0}", e.IdEmpresa);
             var result = await _request.PutAsync(ApiUrlBase, e);
             return result;
-        }
+        }        
     }
 }

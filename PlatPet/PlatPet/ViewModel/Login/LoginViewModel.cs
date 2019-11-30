@@ -18,14 +18,8 @@ namespace PlatPet.ViewModel.Login
         public LoginViewModel()
         {
             RegistrarCommands();
-            usuarioPessoa = new UsuarioPessoa();
-            //Usuario = new ObservableCollection<UsuarioPessoa>();
+            usuarioPessoa = new UsuarioPessoa();           
         }
-
-        //public ObservableCollection<UsuarioPessoa> Usuario
-        //{
-        //    get; set;
-        //}
 
         private void RegistrarCommands()
         {

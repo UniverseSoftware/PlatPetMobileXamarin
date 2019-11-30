@@ -10,6 +10,7 @@ namespace PlatPet.Services.Empresas
     public interface IEmpresaService
     {
         Task<ObservableCollection<Empresa>> GetEmpresaAsync();
+        Task<ObservableCollection<Empresa>> GetServEmpresaAsync();
 
         Task<Empresa> PostEmpresaAsync(Empresa e);
 

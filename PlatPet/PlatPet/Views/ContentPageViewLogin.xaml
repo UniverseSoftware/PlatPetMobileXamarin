@@ -4,76 +4,65 @@
              x:Class="PlatPet.Views.ContentPageViewLogin">
     <ContentPage.Content>
         <StackLayout BackgroundColor="#FFFCCF"  >
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="20"/>
+                    <!--Botão-->
+                    <RowDefinition Height="50"/>
+                    <!--Label-->
+                </Grid.RowDefinitions>
+                <Image Source="marca1.jpg"  WidthRequest="150" HeightRequest="200" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" Grid.Column="1" Grid.Row="1"/>
 
-            <Image Source="marca1.jpg"  WidthRequest="150" HeightRequest="200" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand"/>
+                <Label Text="Email " VerticalOptions="Fill" TextColor="#A96134" HorizontalOptions="Start" FontSize="15" Grid.Column="1" Grid.Row="2"/>
 
-            <Label   Text="Email "   VerticalOptions="Fill" TextColor="#A96134" HorizontalOptions="Start" FontSize="15" />
+                <Entry Placeholder="Entre com seu Usuário" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Text ="{Binding User}" Grid.Column="1" Grid.Row="3"/>
 
-            <Entry 
-                   Placeholder="Entre com seu Usuário"
-                 VerticalOptions="FillAndExpand"
-                   HorizontalOptions="FillAndExpand" 
-                   Text ="{Binding User}">
-            </Entry>
+                <Label  Text="Senha " VerticalOptions="Fill" TextColor="#A96134" HorizontalOptions="Start" Grid.Column="1" Grid.Row="4"/>
 
-            <Label  Text="Senha " VerticalOptions="Fill" TextColor="#A96134" HorizontalOptions="Start" />
+                <Entry Placeholder="Entre com o sua senha" IsPassword="True" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Text="{Binding Senha}" Grid.Column="1" Grid.Row="5"/>
 
-            <Entry 
-                   Placeholder="Entre com o sua senha"
-                  IsPassword="True"
-                   VerticalOptions="FillAndExpand"
-                  HorizontalOptions="FillAndExpand"
-                   Text="{Binding Senha}">
-            </Entry>
+                <Label  Text= " Esqueceu a sua Senha?" TextDecorations="Underline"   TextColor="#A96134" HorizontalTextAlignment="Center" Grid.Column="1" Grid.Row="6"/>
 
-
-            <Label  Text= " Esqueceu a sua Senha?" TextDecorations="Underline"   TextColor="#A96134" HorizontalTextAlignment="Center" />
-
-            <RelativeLayout>
-                <Button x:Name="registerButton" Text="Cadastro" BorderRadius="20"  WidthRequest="180" HeightRequest="50" BackgroundColor="#CF7B47"
-                       RelativeLayout.XConstraint =
-      "{ConstraintExpression Type=RelativeToParent,
+                <RelativeLayout Grid.Column="1" Grid.Row="8">
+                    <Button x:Name="registerButton" Text="Cadastro" BorderRadius="20"  WidthRequest="150" HeightRequest="50" BackgroundColor="#CF7B47" Clicked="Cadastro" Grid.Column="1" Grid.Row="1" 
+                            RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
                              Property=Width,
-                             Factor=0.41,
-                             Constant=-145}" 
+                             Factor=0.85,
+                             Constant=-320}" 
                        RelativeLayout.YConstraint =
       "{ConstraintExpression Type=RelativeToParent,
                              Property=Height,
-                             Factor=0.53,
-                             Constant=-100}" Clicked="Cadastro"/>
+                             Factor=0.9,
+                             Constant=-40}"/>
 
-                <Button x:Name="EntarButton" Text="Entrar" BorderRadius="20" WidthRequest="180" HeightRequest="50" BackgroundColor="#CF7B47"
-                        RelativeLayout.XConstraint =
-      "{ConstraintExpression Type=RelativeToParent,
+
+                    <Button x:Name="EntarButton" Text="Entrar" BorderRadius="20" WidthRequest="150" HeightRequest="50" BackgroundColor="#CF7B47" Command="{Binding EntrarCommand}" Grid.Column="2" Grid.Row="1"
+                            RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
                              Property=Width,
-                             Factor=0.90,
-                             Constant=-150}" 
+                             Factor=0.75,
+                             Constant=-80}" 
                        RelativeLayout.YConstraint =
       "{ConstraintExpression Type=RelativeToParent,
                              Property=Height,
-                             Factor=0.53,
-                             Constant=-100}" Command="{Binding EntrarCommand}"/>
-
-                <Label Text=" Utilizando o app, você concorda com os Termos de uso
-                                                e com a Politica de Privacidade"
-                       TextColor="#A96134"  
-                       RelativeLayout.XConstraint =
-      "{ConstraintExpression Type=RelativeToParent,
-                             Property=Width,
-                             Factor=0.90,
-                             Constant=-350}" 
-                       RelativeLayout.YConstraint =
-      "{ConstraintExpression Type=RelativeToParent,
-                             Property=Height,
-                             Factor=0.69,
-                             Constant=-100}"/>
-
-
-
-
-            </RelativeLayout>
-
-
+                             Factor=0.9,
+                             Constant=-40}"/>
+                    <Label Text="Teste" TextColor="#FFFCCF" IsVisible="False" ></Label>
+                </RelativeLayout>
+                <Label Text=" Utilizando o app, você concorda com os Termos de uso 
+                                     e com a Politica de Privacidade" TextColor="#A96134" HorizontalTextAlignment="Center" IsVisible="False" Grid.Column="1" Grid.Row="7"/>
+                <Label Text=" Utilizando o app, você concorda com os Termos de uso 
+                                     e com a Politica de Privacidade" TextColor="#A96134" HorizontalTextAlignment="Center"  Grid.Column="1" Grid.Row="9"/>
+            </Grid>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

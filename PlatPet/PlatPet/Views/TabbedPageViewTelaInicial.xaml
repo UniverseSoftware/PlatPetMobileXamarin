@@ -7,7 +7,7 @@
   <!--Pages can be added as references or inline-->
     <ContentPage Title="Categorias">
         <RelativeLayout>
-            <Button Text="Banho e Tosa" Clicked="Banho" BorderRadius="10" WidthRequest="172" HeightRequest="80" BackgroundColor="#CF7B47" RelativeLayout.XConstraint =
+            <Button Text="Banho e Tosa" Command="{Binding BanhoCommand}" BorderRadius="10" WidthRequest="172" HeightRequest="80" BackgroundColor="#CF7B47" RelativeLayout.XConstraint =
       "{ConstraintExpression Type=RelativeToParent,
                              Property=Width,
                              Factor=0.29,
@@ -17,8 +17,8 @@
                              Property=Height,
                              Factor=0.23,
                              Constant=-100}"></Button>
-            
-            <Button Text="Consulta Veterinária" Clicked="Consulta"  BorderRadius="10" WidthRequest="172" HeightRequest="80" BackgroundColor="#CF7B47" RelativeLayout.XConstraint =
+
+            <Button Text="Consulta Veterinária" Command="{Binding ConsultaCommand}"  BorderRadius="10" WidthRequest="172" HeightRequest="80" BackgroundColor="#CF7B47" RelativeLayout.XConstraint =
       "{ConstraintExpression Type=RelativeToParent,
                              Property=Width,
                              Factor=0.78,

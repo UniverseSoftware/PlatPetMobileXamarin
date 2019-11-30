@@ -5,14 +5,12 @@
     <ContentPage.Content>
         <ScrollView>
         <StackLayout BackgroundColor="#FFFCCF">
-            <Label Text="Empresa"/>
-            <Entry IsEnabled="False"></Entry>
+                <Label Text="{Binding NFantasiaEmpresa}"/>
+            <Entry Text="{Binding NFantasiaEmpresa}" IsEnabled="False"></Entry>
             <Label Text="Serviço"/>
             <Entry IsEnabled="False"></Entry>
             <Label Text="Pet" />
                 <Picker Title="Selecione seu Pet" ItemsSource="{Binding PetsG}"  ItemDisplayBinding="{Binding NomePet}" SelectedItem="{Binding Pets}"/>
-
-
 
                 <Label Text="Tipo de Serviço" />
                 <Picker Title="Selecione o tipo de Serviço" ItemsSource="{Binding ServComEmp}"  ItemDisplayBinding="{Binding NomeServico}">
@@ -21,7 +19,7 @@
             <Label Text="Valor Total"/>
             <Label Text="Forma de Pagamento"/>
                 <Picker Title="Forma de Pagamento" ItemsSource="{Binding PagG}" ItemDisplayBinding="{Binding DescPagamento}"/>
-                <Button Text="Confirmar" CornerRadius="100" BackgroundColor="#E28249" IsEnabled="True"></Button>
+                <Button Text="Confirmar" CornerRadius="100" BackgroundColor="#E28249" IsEnabled="True" Command="{Binding GravarCommand}"></Button>
         </StackLayout>
         </ScrollView>
     </ContentPage.Content>

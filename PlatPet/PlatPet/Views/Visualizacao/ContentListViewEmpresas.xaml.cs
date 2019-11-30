@@ -15,11 +15,12 @@ namespace PlatPet.Views.Visualizacao
     public partial class ContentListViewEmpresas : ContentPage
     {
         ListaEmpresasViewModel listaEmpresasViewModel;
-        public ContentListViewEmpresas()
+        public ContentListViewEmpresas(string title)
         {
             InitializeComponent();
             listaEmpresasViewModel = new ListaEmpresasViewModel();
             BindingContext = listaEmpresasViewModel;
+            Title = title;
         }
 
         protected override void OnAppearing()
@@ -32,7 +33,7 @@ namespace PlatPet.Views.Visualizacao
             });
             MessagingCenter.Subscribe<Empresa>(this, "Mostrar", async (empresa) =>
             {
-                await Navigation.PushAsync(new ContentPageViewAgendarConsulta(empresa, (empresa.NFantasiaEmpresa == "" || empresa.NFantasiaEmpresa == null) ? "Novo Pet" : "Alterar Pet"));
+                await Navigation.PushAsync(new ContentPageViewAgendarConsulta(empresa, (empresa.NFantasiaEmpresa == "" || empresa.NFantasiaEmpresa == null) ? "Agendamento" : "Agendamento"));
             });
         }
     }
