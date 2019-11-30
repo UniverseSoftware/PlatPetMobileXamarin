@@ -36,5 +36,10 @@ namespace PlatPet.Views.Visualizacao
                 await Navigation.PushAsync(new ContentPageViewAgendarConsulta(empresa, (empresa.NFantasiaEmpresa == "" || empresa.NFantasiaEmpresa == null) ? "Agendamento" : "Agendamento"));
             });
         }
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            MessagingCenter.Unsubscribe<string>(this, "Mostrar");
+        }
     }
 }

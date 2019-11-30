@@ -37,7 +37,7 @@
                     <Button x:Name="registerButton" Text="Cadastro" BorderRadius="20"  WidthRequest="150" HeightRequest="50" BackgroundColor="#CF7B47" Clicked="Cadastro" Grid.Column="1" Grid.Row="1" 
                             RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
                              Property=Width,
-                             Factor=0.85,
+                             Factor=0.93,
                              Constant=-320}" 
                        RelativeLayout.YConstraint =
       "{ConstraintExpression Type=RelativeToParent,

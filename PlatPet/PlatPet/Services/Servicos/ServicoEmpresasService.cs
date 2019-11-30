@@ -11,6 +11,12 @@ namespace PlatPet.Services.Servicos
     {
         private readonly IRequest _request;
         private const string ApiUrlBaseServEmp = "http://universesoftware2019.somee.com/api/ServicoEmpresas";
+
+        public ServicoEmpresasService()
+        {
+            _request = new Request();
+        }
+
         public Task<ServicoEmpresas> DeleteServicoEmpresaAsync(int servicoId)
         {
             throw new NotImplementedException();
@@ -32,6 +38,14 @@ namespace PlatPet.Services.Servicos
         public Task<ServicoEmpresas> PutServicoEmpresaAsync(ServicoEmpresas s)
         {
             throw new NotImplementedException();
+        }
+
+        public async Task<ObservableCollection<ServicoEmpresas>> GetServicosEmpresaAsync(ServicoEmpresas s)
+        {
+            string urlComplementar = string.Format("/{0}", s.IdEmpresa);
+            ObservableCollection<ServicoEmpresas> servEmp = await
+                _request.GetAsync<ObservableCollection<ServicoEmpresas>>(ApiUrlBaseServEmp + urlComplementar);
+            return servEmp;
         }
     }
 }

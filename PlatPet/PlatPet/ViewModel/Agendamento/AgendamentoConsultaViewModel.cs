@@ -17,6 +17,7 @@ namespace PlatPet.ViewModel.Agendamento
         private Pet pet;
         private FormaPagamento pag;
         private Empresa emp;
+        private ServicoEmpresas sEmp;
         private IPetService pService = new PetService();
         private IFormaPagarService fService = new FormaPagarService();
         private IServicosService sService = new ServicosService();
@@ -83,7 +84,7 @@ namespace PlatPet.ViewModel.Agendamento
             ServComEmp = new ObservableCollection<ServicosComEmpresa>();
             pet = new Pet();
             int id = Convert.ToInt32(Application.Current.Properties["PessoaId"].ToString());
-            emp.NFantasiaEmpresa = empresa.NFantasiaEmpresa;
+            Application.Current.Properties["EmpID"] = empresa.IdEmpresa; 
         }
 
         public AgendamentoConsultaViewModel()
@@ -141,7 +142,9 @@ namespace PlatPet.ViewModel.Agendamento
 
         public async Task ObterServComEmp()
         {
-            ServicosG = await seService.GetServicoEmpresaAsync();
+            sEmp = new ServicoEmpresas();
+            sEmp.IdEmpresa = Convert.ToInt32(Application.Current.Properties["EmpID"].ToString());
+            ServicosG = await seService.GetServicosEmpresaAsync(sEmp);
             OnPropertyChanged(nameof(ServComEmp));
 
 

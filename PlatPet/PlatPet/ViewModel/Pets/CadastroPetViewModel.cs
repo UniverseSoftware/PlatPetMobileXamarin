@@ -67,7 +67,7 @@ namespace PlatPet.ViewModel.Pets
             {
                 this.NomePet = string.Empty;
                 this.RG = string.Empty;
-                //this.SubEspecie = 0;
+                this.SubEspecie = Pet;
                 this.Observacao = string.Empty;
                 this.Pet = new Pet();
             }
@@ -80,6 +80,22 @@ namespace PlatPet.ViewModel.Pets
                 this.Pet.NomePet = value;
                 OnPropertyChanged();
             }
+        }
+
+        public Pet Especie
+        {
+            get { return pet; }
+            set
+            {
+                if (value != null)
+                {
+                    pet = value;
+                    OnPropertyChanged();
+                    this.Pet.IdEspecie = pet.IdEspecie;
+                    ObterSubEspecieAsync();
+                }
+            }
+            
         }
 
         public Pet SubEspecie
@@ -163,7 +179,6 @@ namespace PlatPet.ViewModel.Pets
         public async Task Popular()
         {
             ObterEspecieAsync();
-            ObterSubEspecieAsync();
         }
 
         public async Task ObterPetAsync()
@@ -186,21 +201,27 @@ namespace PlatPet.ViewModel.Pets
                     IdEspecie = especies.IdEspecie
                 });
             }
+
+                      
         }
 
         public async Task ObterSubEspecieAsync()
         {
-            SubEspeciesP = await cService.GetSubEspecieAsync();
-            OnPropertyChanged(nameof(SubEspeciesG));
-
-            foreach (var subespecies in SubEspeciesP)
+             if(EspeciesG != null || pet.IdEspecie != null || pet.IdEspecie != 0)
             {
-                SubEspeciesG.Add(new Pet
+                SubEspeciesG.Clear();
+                SubEspeciesP = await cService.GetSubEspecieAsync(pet);
+                OnPropertyChanged(nameof(SubEspeciesG));
+
+                foreach (var subespecies in SubEspeciesP)
+                {
+                    SubEspeciesG.Add(new Pet
                     {
                         NomeSubEspecie = subespecies.NomeSubEspecie,
                         IdSubespecie = subespecies.IdSubespecie
-                    });                
-            }            
+                    });
+                }
+            } 
         }
 
         #endregion

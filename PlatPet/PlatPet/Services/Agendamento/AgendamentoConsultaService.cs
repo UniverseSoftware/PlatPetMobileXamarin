@@ -79,7 +79,11 @@ namespace PlatPet.Services.Agendamento
             throw new NotImplementedException();
         }
 
-#endregion
+        public Task<ObservableCollection<Pet>> GetSubEspecieAsync(Pet p)
+        {
+            throw new NotImplementedException();
+        }
+        #endregion
 
         #region Forma Pagamento
         public async Task<ObservableCollection<FormaPagamento>> GetFormaPagarAsync()
@@ -137,6 +141,11 @@ namespace PlatPet.Services.Agendamento
         }
 
         public Task<ServicoEmpresas> DeleteServicoEmpresaAsync(int servicoId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<ObservableCollection<ServicoEmpresas>> GetServicosEmpresaAsync(ServicoEmpresas s)
         {
             throw new NotImplementedException();
         }

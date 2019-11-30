@@ -11,6 +11,8 @@ namespace PlatPet.Services.Servicos
     {
         Task<ObservableCollection<ServicoEmpresas>> GetServicoEmpresaAsync();
 
+        Task<ObservableCollection<ServicoEmpresas>> GetServicosEmpresaAsync(ServicoEmpresas s);
+
         Task<ServicoEmpresas> PostServicoEmpresaAsync(ServicoEmpresas s);
 
         Task<ServicoEmpresas> PutServicoEmpresaAsync(ServicoEmpresas s);
