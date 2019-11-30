@@ -68,6 +68,7 @@ namespace PlatPet.ViewModel.Pets
                 this.NomePet = string.Empty;
                 this.RG = string.Empty;
                 this.SubEspecie = Pet;
+                this.Especie = Pet;
                 this.Observacao = string.Empty;
                 this.Pet = new Pet();
             }
@@ -91,7 +92,7 @@ namespace PlatPet.ViewModel.Pets
                 {
                     pet = value;
                     OnPropertyChanged();
-                    this.Pet.IdEspecie = pet.IdEspecie;
+                    Pet.IdEspecie = pet.IdEspecie;
                     ObterSubEspecieAsync();
                 }
             }

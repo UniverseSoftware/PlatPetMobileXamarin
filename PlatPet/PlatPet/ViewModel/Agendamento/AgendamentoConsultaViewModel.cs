@@ -144,7 +144,7 @@ namespace PlatPet.ViewModel.Agendamento
         {
             sEmp = new ServicoEmpresas();
             sEmp.IdEmpresa = Convert.ToInt32(Application.Current.Properties["EmpID"].ToString());
-            ServicosG = await seService.GetServicosEmpresaAsync(sEmp);
+            ServicosG = await seService.GetServicoEmpresaAsync();
             OnPropertyChanged(nameof(ServComEmp));
 
 
