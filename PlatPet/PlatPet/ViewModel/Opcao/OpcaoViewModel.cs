@@ -31,12 +31,12 @@ namespace PlatPet.ViewModel.Opcao
         public async Task BanhoAsync()
         {
             MessagingCenter.Send<string>("Entrar", "InformacaoCRUD");
-            Application.Current.Properties["Op"] = "1";
+            Application.Current.Properties["Op"] = "Banho e Tosa";
         }
         public async Task ConsultaAsync()
         {
             MessagingCenter.Send<string>("Entrar", "InformacaoCRUD");
-            Application.Current.Properties["Op"] = "2";
+            Application.Current.Properties["Op"] = "Consulta Veterinária";
         }
     }
 }

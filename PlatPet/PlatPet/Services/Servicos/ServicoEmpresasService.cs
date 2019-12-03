@@ -11,6 +11,7 @@ namespace PlatPet.Services.Servicos
     {
         private readonly IRequest _request;
         private const string ApiUrlBaseServEmp = "http://universesoftware2019.somee.com/api/ServicoEmpresas";
+        private const string ApiUrlBaseServEmpId = "http://universesoftware2019.somee.com/api/ServicosEmpresa";
 
         public ServicoEmpresasService()
         {
@@ -44,7 +45,7 @@ namespace PlatPet.Services.Servicos
         {
             string urlComplementar = string.Format("/{0}", s.IdEmpresa);
             ObservableCollection<ServicoEmpresas> servEmp = await
-                _request.GetAsync<ObservableCollection<ServicoEmpresas>>(ApiUrlBaseServEmp + urlComplementar);
+                _request.GetAsync<ObservableCollection<ServicoEmpresas>>(ApiUrlBaseServEmpId + urlComplementar);
             return servEmp;
         }
     }

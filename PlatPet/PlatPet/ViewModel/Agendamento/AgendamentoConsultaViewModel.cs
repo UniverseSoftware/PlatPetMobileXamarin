@@ -83,9 +83,14 @@ namespace PlatPet.ViewModel.Agendamento
             ServicosEmpG = new ObservableCollection<ServicoEmpresas>();
             ServComEmp = new ObservableCollection<ServicosComEmpresa>();
             pet = new Pet();
+            Application.Current.Properties["EmpID"] = empresa.IdEmpresa;
             int id = Convert.ToInt32(Application.Current.Properties["PessoaId"].ToString());
-            Application.Current.Properties["EmpID"] = empresa.IdEmpresa; 
+            nmEmpresa = empresa.NFantasiaEmpresa;
+            servico = Application.Current.Properties["Op"].ToString();
         }
+
+        string servico;
+        string nmEmpresa;
 
         public AgendamentoConsultaViewModel()
         {
@@ -115,7 +120,7 @@ namespace PlatPet.ViewModel.Agendamento
             PetsP = await pService.GetPetAsync(pet);
             OnPropertyChanged(nameof(PetsG));
 
-            foreach(var pets in PetsP)
+            foreach (var pets in PetsP)
             {
                 PetsG.Add(new Pet
                 {
@@ -130,7 +135,7 @@ namespace PlatPet.ViewModel.Agendamento
             PagP = await fService.GetFormaPagarAsync();
             OnPropertyChanged(nameof(PagG));
 
-            foreach(var pags in PagP)
+            foreach (var pags in PagP)
             {
                 PagG.Add(new FormaPagamento
                 {
@@ -144,7 +149,7 @@ namespace PlatPet.ViewModel.Agendamento
         {
             sEmp = new ServicoEmpresas();
             sEmp.IdEmpresa = Convert.ToInt32(Application.Current.Properties["EmpID"].ToString());
-            ServicosG = await seService.GetServicoEmpresaAsync();
+            ServicosG = await seService.GetServicosEmpresaAsync(sEmp);
             OnPropertyChanged(nameof(ServComEmp));
 
 
@@ -171,6 +176,26 @@ namespace PlatPet.ViewModel.Agendamento
                     OnPropertyChanged();
                     this.pet.IdSubespecie = pet.IdSubespecie;
                 }
+            }
+        }
+                
+        public string NmEmpresa
+        {
+            get { return nmEmpresa; }
+            set
+            {
+                value = nmEmpresa;
+                OnPropertyChanged();
+            }
+        }
+
+        public string NmServico
+        {
+            get { return servico; }
+            set
+            {
+                value = servico;
+                OnPropertyChanged();
             }
         }
     }

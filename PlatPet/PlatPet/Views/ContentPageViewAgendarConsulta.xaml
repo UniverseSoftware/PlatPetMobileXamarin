@@ -5,10 +5,10 @@
     <ContentPage.Content>
         <ScrollView>
         <StackLayout BackgroundColor="#FFFCCF">
-                <Label Text="{Binding NFantasiaEmpresa}"/>
-            <Entry Text="{Binding NFantasiaEmpresa}" IsEnabled="False"></Entry>
+                <Label Text="Empresa"/>
+                <Entry Text="{Binding NmEmpresa}" IsEnabled="false" TextColor="Black"></Entry>
             <Label Text="Serviço"/>
-            <Entry IsEnabled="False"></Entry>
+                <Entry Text="{Binding NmServico}" IsEnabled="false" TextColor="Black"></Entry>
             <Label Text="Pet" />
                 <Picker Title="Selecione seu Pet" ItemsSource="{Binding PetsG}"  ItemDisplayBinding="{Binding NomePet}" SelectedItem="{Binding Pets}"/>
 
