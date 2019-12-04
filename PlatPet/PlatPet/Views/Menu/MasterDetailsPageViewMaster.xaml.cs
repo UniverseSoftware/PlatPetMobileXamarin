@@ -38,23 +38,18 @@ namespace PlatPet.Views
 
                 new MasterDetailsPageViewMenuItem {Id = 0, Title = "Lista Pets",
                     TargetType = typeof(ContentListViewPet),
-                    IconSource = "pata.png",}
+                    IconSource = "patac.png",}
 
                 ,
 
                 new MasterDetailsPageViewMenuItem {Id = 0, Title = "Agenda de Consultas",
                     TargetType = typeof(ContentPageViewAgendarConsulta),
-                    IconSource = "calendario.png",}
-                ,
-
-                new MasterDetailsPageViewMenuItem {Id = 0, Title = "Lista de Empresas",
-                    TargetType = typeof(ContentListViewEmpresas),
-                    IconSource = "calendario.png",}
+                    IconSource = "calebdarioc.png",}
                 ,
 
                 new MasterDetailsPageViewMenuItem {Id = 0, Title = "Forma Pagamento",
                     TargetType = typeof(ContentPageCadastroFormaPagamentoView),
-                    IconSource = "cartao.png"
+                    IconSource = "cartaoc.png"
                 ,}
 
         };
