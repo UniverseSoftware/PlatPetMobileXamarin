@@ -1,6 +1,7 @@
 ﻿using PlatPet.ViewModel.Opcao;
 using PlatPet.Views.Cadastros;
 using PlatPet.Views.Visualizacao;
+using Plugin.Geolocator;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,25 +21,24 @@ namespace PlatPet.Views
         public TabbedPageViewTelaInicial()
         {
             InitializeComponent();
-            opcaoViewModel = new OpcaoViewModel();
+            opcaoViewModel = new OpcaoViewModel(); 
             BindingContext = opcaoViewModel;
-            var mapa = new Map(MapSpan.FromCenterAndRadius(new Position(-23.4945044, -46.5909981), Distance.FromKilometers(1)));
+            //Mapa();
+            var mapa = new Map(MapSpan.FromCenterAndRadius(new Position(-23.5196648, -46.5962384), Distance.FromKilometers(1)));
             MapContainer.Children.Add(mapa);
 
         }
-        //async void Banho(object sender, EventArgs e)
-        //{
-        //    string msg = "Tela em produção";
-        //    await DisplayAlert("Informação", msg, "OK");
-        //    await Navigation.PushAsync(new ContentPageViewAgendarConsulta());
-        //}
-
-        //async void Consulta(object sender, EventArgs e)
-        //{
-        //    string msg = "Tela em produção";
-        //    await DisplayAlert("Informação", msg, "OK");
-        //    await Navigation.PushAsync(new ContentPageViewAgendarConsulta());
-        //}
+        double latitude;
+        double longitude;
+        protected async Task Mapa()
+        {
+            var locator = CrossGeolocator.Current;
+            locator.DesiredAccuracy = 50;
+            var position = await locator.GetPositionAsync();
+           
+            latitude = position.Latitude;
+            longitude = position.Longitude;
+        }
 
         async void Adestramento(object sender, EventArgs e)
         {

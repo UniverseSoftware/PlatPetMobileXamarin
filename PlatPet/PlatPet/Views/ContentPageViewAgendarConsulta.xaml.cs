@@ -16,8 +16,8 @@ namespace PlatPet.Views
         public ContentPageViewAgendarConsulta()
         {
             InitializeComponent();
-            agendamentoConsultaViewModel = new AgendamentoConsultaViewModel();
-            BindingContext = agendamentoConsultaViewModel;            
+            //agendamentoConsultaViewModel = new AgendamentoConsultaViewModel();
+            //BindingContext = agendamentoConsultaViewModel;            
         }
 
         public ContentPageViewAgendarConsulta(Empresa empresa, string title) : this()
@@ -37,12 +37,18 @@ namespace PlatPet.Views
             MessagingCenter.Subscribe<string>(this, "InformacaoCRUD", async (msg) =>
             {
                 await DisplayAlert("Informação", msg, "OK");
+                await Navigation.PushModalAsync(new MasterDetailsPageView());
             });
         }
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
             MessagingCenter.Unsubscribe<string>(this, "InformacaoCRUD");
+        }
+
+        private async void Button_Clicked(object sender, System.EventArgs e)
+        {
+            await agendamentoConsultaViewModel.GravarAsync();
         }
     }
 }

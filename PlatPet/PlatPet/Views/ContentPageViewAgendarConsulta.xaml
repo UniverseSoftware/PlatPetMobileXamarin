@@ -13,13 +13,12 @@
                 <Picker Title="Selecione seu Pet" ItemsSource="{Binding PetsG}"  ItemDisplayBinding="{Binding NomePet}" SelectedItem="{Binding Pets}"/>
 
                 <Label Text="Tipo de Serviço" />
-                <Picker Title="Selecione o tipo de Serviço" ItemsSource="{Binding ServComEmp}"  ItemDisplayBinding="{Binding NomeServico}">
-                
-            </Picker>
-            <Label Text="Valor Total"/>
-            <Label Text="Forma de Pagamento"/>
-                <Picker Title="Forma de Pagamento" ItemsSource="{Binding PagG}" ItemDisplayBinding="{Binding DescPagamento}"/>
-                <Button Text="Confirmar" CornerRadius="100" BackgroundColor="#E28249" IsEnabled="True" Command="{Binding GravarCommand}"></Button>
+                <Picker Title="Selecione o tipo de Serviço" ItemsSource="{Binding ServComEmp}"  ItemDisplayBinding="{Binding NomeServico}" SelectedItem="{Binding Servicos}">
+
+                </Picker>
+                <Label Text="Forma de Pagamento"/>
+                <Picker Title="Forma de Pagamento" ItemsSource="{Binding PagG}" ItemDisplayBinding="{Binding DescPagamento}" SelectedItem="{Binding Pagamentos}"/>
+                <Button Text="Confirmar" Clicked="Button_Clicked" CornerRadius="100" BackgroundColor="#E28249" Command="{Binding GravarCommand}"></Button>
         </StackLayout>
         </ScrollView>
     </ContentPage.Content>

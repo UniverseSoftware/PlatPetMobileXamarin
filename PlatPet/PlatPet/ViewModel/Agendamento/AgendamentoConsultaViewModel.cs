@@ -1,5 +1,6 @@
 ﻿using PlatPet.Models;
 using PlatPet.Services.Pagamentos;
+using PlatPet.Services.Pedidos;
 using PlatPet.Services.Pets;
 using PlatPet.Services.Servicos;
 using System;
@@ -18,10 +19,13 @@ namespace PlatPet.ViewModel.Agendamento
         private FormaPagamento pag;
         private Empresa emp;
         private ServicoEmpresas sEmp;
+        private Pedido ped;
+        private ServicosComEmpresa servCEmp;
         private IPetService pService = new PetService();
         private IFormaPagarService fService = new FormaPagarService();
         private IServicosService sService = new ServicosService();
         private IServicoEmpresasService seService = new ServicoEmpresasService();
+        private IPedidosService pdService = new PedidosService();
         private ICommand GravarCommand { get; set; }
 
         #region Observables
@@ -87,24 +91,48 @@ namespace PlatPet.ViewModel.Agendamento
             int id = Convert.ToInt32(Application.Current.Properties["PessoaId"].ToString());
             nmEmpresa = empresa.NFantasiaEmpresa;
             servico = Application.Current.Properties["Op"].ToString();
+            RegistraCommands();
         }
 
         string servico;
         string nmEmpresa;
 
-        public AgendamentoConsultaViewModel()
+        //public AgendamentoConsultaViewModel()
+        //{
+        //    PetsP = new ObservableCollection<Pet>();
+        //    PetsG = new ObservableCollection<Pet>();
+        //    PagP = new ObservableCollection<FormaPagamento>();
+        //    PagG = new ObservableCollection<FormaPagamento>();
+        //    ServicosP = new ObservableCollection<Servico>();
+        //    ServicosG = new ObservableCollection<ServicoEmpresas>();
+        //    ServicosEmpP = new ObservableCollection<ServicoEmpresas>();
+        //    ServicosEmpG = new ObservableCollection<ServicoEmpresas>();
+        //    ServComEmp = new ObservableCollection<ServicosComEmpresa>();
+        //    pet = new Pet();
+        //    int id = Convert.ToInt32(Application.Current.Properties["PessoaId"].ToString());
+        //}
+
+        private void RegistraCommands()
         {
-            PetsP = new ObservableCollection<Pet>();
-            PetsG = new ObservableCollection<Pet>();
-            PagP = new ObservableCollection<FormaPagamento>();
-            PagG = new ObservableCollection<FormaPagamento>();
-            ServicosP = new ObservableCollection<Servico>();
-            ServicosG = new ObservableCollection<ServicoEmpresas>();
-            ServicosEmpP = new ObservableCollection<ServicoEmpresas>();
-            ServicosEmpG = new ObservableCollection<ServicoEmpresas>();
-            ServComEmp = new ObservableCollection<ServicosComEmpresa>();
-            pet = new Pet();
-            int id = Convert.ToInt32(Application.Current.Properties["PessoaId"].ToString());
+            GravarCommand = new Command(async () =>
+            {
+                await GravarAsync();
+                MessagingCenter.Send<string>("Dado salvo com sucesso.", "InformacaoCRUD");
+            });
+        }
+
+        public async Task GravarAsync()
+        {
+            //var ehNovoUsuario = (ped.IdPedido == 0 ? true : false);
+            ped = new Pedido();
+            ped.IdEmpresa = Convert.ToInt32(Application.Current.Properties["EmpID"].ToString());
+            ped.IdPagamento = Convert.ToInt32(Application.Current.Properties["IdPagamento"]);
+            ped.IdPet = Convert.ToInt32(Application.Current.Properties["IdPet"]);
+            ped.TotPedido = Convert.ToDouble(Application.Current.Properties["IdPagamento"]);
+            await pdService.PostPedidoAsync(ped);
+            MessagingCenter.Send<string>("Dado salvo com sucesso.", "InformacaoCRUD");
+            //Chamada ao método que limpa os campos da tela
+            //AtualizarPropriedadesParaVisao(ehNovoUsuario);
         }
 
         public async Task Popular()
@@ -160,7 +188,7 @@ namespace PlatPet.ViewModel.Agendamento
                     IdEmpresa = servEmp.IdEmpresa,
                     IdServicoEmpresa = servEmp.IdServicoEmpresa,
                     VlServicoEmpresa = servEmp.VlServicoEmpresa,
-                    NomeServico = string.Format("{0} - {1}", servEmp.IdServico, servEmp.NomeServico)
+                    NomeServico = string.Format("{0} - {1}", servEmp.VlServicoEmpresa, servEmp.NomeServico)
                 });
             }
         }
@@ -174,7 +202,35 @@ namespace PlatPet.ViewModel.Agendamento
                 {
                     pet = value;
                     OnPropertyChanged();
-                    this.pet.IdSubespecie = pet.IdSubespecie;
+                    Application.Current.Properties["IdPet"] = pet.IdPet;
+                }
+            }
+        }
+
+        public FormaPagamento Pagamentos
+        {
+            get { return pag; }
+            set
+            {
+                if (value != null)
+                {
+                    pag = value;
+                    OnPropertyChanged();
+                    Application.Current.Properties["IdPagamento"] = pag.IdPagemento;
+                }
+            }
+        }
+
+        public ServicosComEmpresa Servicos
+        {
+            get { return servCEmp; }
+            set
+            {
+                if (value != null)
+                {
+                    servCEmp = value;
+                    OnPropertyChanged();
+                    Application.Current.Properties["VlServico"] = servCEmp.VlServicoEmpresa;
                 }
             }
         }
