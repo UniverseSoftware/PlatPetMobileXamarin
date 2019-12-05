@@ -12,5 +12,9 @@ namespace PlatPet.Models
         public int IdPagamento { get; set; }
         public int IdPet { get; set; }
         public double TotPedido { get; set; }
+        public string DescPagamento { get; set; }
+        public string NomeEmpresa { get; set; }
+        public string NomePessoa { get; set; }
+        public string NomePet { get; set; }
     }
 }

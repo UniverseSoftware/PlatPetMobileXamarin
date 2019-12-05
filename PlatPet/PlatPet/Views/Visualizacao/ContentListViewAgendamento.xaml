@@ -9,8 +9,8 @@
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout Padding="10">
-                                <Label Text="{Binding TotPedido}" FontSize="Large" FontAttributes="Bold"/>
-                                <Label Text="{Binding IdPedido}" FontSize="Large" FontAttributes="Bold"/>
+                                <Label Text="{Binding NomeEmpresa}" FontSize="Large" FontAttributes="Bold"/>
+                                <Label Text="{Binding NomePet}" FontSize="Large" FontAttributes="Bold"/>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

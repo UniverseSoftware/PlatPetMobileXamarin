@@ -2,6 +2,7 @@
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             xmlns:pages="clr-namespace:PlatPet.Views"
+            xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
             x:Class="PlatPet.Views.TabbedPageViewTelaInicial"
              BackgroundColor="#FFFCCF">
   <!--Pages can be added as references or inline-->
@@ -53,7 +54,11 @@
         </RelativeLayout>
     </ContentPage>
     <ContentPage Title="Mapa" >
-        <StackLayout x:Name="MapContainer">
+        <StackLayout >
+            <maps:Map x:Name="mapa"
+                    
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand"/>
 
         </StackLayout>
     </ContentPage>

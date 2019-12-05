@@ -77,7 +77,7 @@ namespace PlatPet.ViewModel.Login
                 ContentPageViewLogin login = new ContentPageViewLogin();
                 MessagingCenter.Send<string>("Bem Vindo!", "InformacaoCRUD");
                 Application.Current.Properties["PessoaId"] = usuarioPessoa.IdEP;
-                Application.Current.Properties["PessoaId"] = usuarioPessoa.IdUsuario;
+                Application.Current.Properties["UsuId"] = usuarioPessoa.IdUsuario;
                 Application.Current.Properties["Nome"] = usuarioPessoa.NomeEP;
             }
         }                
