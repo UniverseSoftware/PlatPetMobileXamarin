@@ -26,6 +26,12 @@ namespace PlatPet.Views
             this.BindingContext = this.agendamentoConsultaViewModel;
             this.Title = title;
         }
+        public ContentPageViewAgendarConsulta(Pedido ped, string title) : this()
+        {
+            this.agendamentoConsultaViewModel = new AgendamentoConsultaViewModel(ped);
+            this.BindingContext = this.agendamentoConsultaViewModel;
+            this.Title = title;
+        }
 
         protected override void OnAppearing()
         {

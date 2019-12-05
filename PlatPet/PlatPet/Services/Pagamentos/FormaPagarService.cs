@@ -21,7 +21,7 @@ namespace PlatPet.Services.Pagamentos
         {
             string urlComplementar = string.Format("/{0}", pagId);
             await _request.DeleteAsync(ApiUrlBase + urlComplementar);
-            return new FormaPagamento() { IdPagemento = pagId };
+            return new FormaPagamento() { IdPagamento = pagId };
         }
 
         public async Task<ObservableCollection<FormaPagamento>> GetFormaPagarAsync()
@@ -34,7 +34,7 @@ namespace PlatPet.Services.Pagamentos
 
         public async Task<FormaPagamento> PostFormaPagarAsync(FormaPagamento p)
         {
-            if (p.IdPagemento == 0)
+            if (p.IdPagamento == 0)
             {
                 return await _request.PostAsync(ApiUrlBase, p);
 

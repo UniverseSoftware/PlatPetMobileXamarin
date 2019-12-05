@@ -11,6 +11,7 @@ namespace PlatPet.Services.Pedidos
     {
         private readonly IRequest _request;
         private const string ApiUrlBase = "http://universesoftware2019.somee.com/api/Pedidos";
+        private const string ApiUrlBasePessoa = "http://universesoftware2019.somee.com/api/PedidosPessoa";
         public PedidosService()
         {
             _request = new Request();
@@ -20,9 +21,13 @@ namespace PlatPet.Services.Pedidos
             throw new NotImplementedException();
         }
 
-        public Task<ObservableCollection<Pedido>> GetPedidoAsync(Pedido pd)
+        public async Task<ObservableCollection<Pedido>> GetPedidoAsync(Pedido pd)
         {
-            throw new NotImplementedException();
+            string urlComplementar = string.Format("/{0}", pd.IdPessoa);
+            ObservableCollection<Pedido> ped = await
+                _request.GetAsync<ObservableCollection<Pedido>>(ApiUrlBasePessoa + urlComplementar);
+
+            return ped;
         }
 
         public Task<ObservableCollection<Pedido>> GetPedidoAsync()

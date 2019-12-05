@@ -43,7 +43,7 @@ namespace PlatPet.Views
                 ,
 
                 new MasterDetailsPageViewMenuItem {Id = 0, Title = "Agenda de Consultas",
-                    TargetType = typeof(ContentPageViewAgendarConsulta),
+                    TargetType = typeof(ContentListViewAgendamento),
                     IconSource = "calebdarioc.png",}
                 ,
 

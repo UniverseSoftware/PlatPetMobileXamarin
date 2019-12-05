@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PlatPet.Views.Visualizacao.ContentListViewAgendamento">
+    <ContentPage.Content>
+        <StackLayout Padding="10, 0, 0, 0" VerticalOptions="FillAndExpand" BackgroundColor="#FFFCCF">
+            <ListView x:Name="listView" HasUnevenRows="True" ItemsSource="{Binding Pedidos}" SelectedItem="{Binding SelPed}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="10">
+                                <Label Text="{Binding TotPedido}" FontSize="Large" FontAttributes="Bold"/>
+                                <Label Text="{Binding IdPedido}" FontSize="Large" FontAttributes="Bold"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

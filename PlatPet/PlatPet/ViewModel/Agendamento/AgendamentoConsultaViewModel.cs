@@ -94,6 +94,24 @@ namespace PlatPet.ViewModel.Agendamento
             RegistraCommands();
         }
 
+        public AgendamentoConsultaViewModel(Pedido ped)
+        {
+            emp = new Empresa();
+            PetsP = new ObservableCollection<Pet>();
+            PetsG = new ObservableCollection<Pet>();
+            PagP = new ObservableCollection<FormaPagamento>();
+            PagG = new ObservableCollection<FormaPagamento>();
+            ServicosP = new ObservableCollection<Servico>();
+            ServicosG = new ObservableCollection<ServicoEmpresas>();
+            ServicosEmpP = new ObservableCollection<ServicoEmpresas>();
+            ServicosEmpG = new ObservableCollection<ServicoEmpresas>();
+            ServComEmp = new ObservableCollection<ServicosComEmpresa>();
+            pet = new Pet();            
+            int id = Convert.ToInt32(Application.Current.Properties["PessoaId"].ToString());            
+            servico = Application.Current.Properties["Op"].ToString();
+            RegistraCommands();
+        }
+
         string servico;
         string nmEmpresa;
 
@@ -122,17 +140,14 @@ namespace PlatPet.ViewModel.Agendamento
         }
 
         public async Task GravarAsync()
-        {
-            //var ehNovoUsuario = (ped.IdPedido == 0 ? true : false);
+        {            
             ped = new Pedido();
             ped.IdEmpresa = Convert.ToInt32(Application.Current.Properties["EmpID"].ToString());
             ped.IdPagamento = Convert.ToInt32(Application.Current.Properties["IdPagamento"]);
             ped.IdPet = Convert.ToInt32(Application.Current.Properties["IdPet"]);
             ped.TotPedido = Convert.ToDouble(Application.Current.Properties["IdPagamento"]);
             await pdService.PostPedidoAsync(ped);
-            MessagingCenter.Send<string>("Dado salvo com sucesso.", "InformacaoCRUD");
-            //Chamada ao método que limpa os campos da tela
-            //AtualizarPropriedadesParaVisao(ehNovoUsuario);
+            MessagingCenter.Send<string>("Dado salvo com sucesso.", "InformacaoCRUD");            
         }
 
         public async Task Popular()
@@ -168,7 +183,7 @@ namespace PlatPet.ViewModel.Agendamento
                 PagG.Add(new FormaPagamento
                 {
                     DescPagamento = pags.DescPagamento,
-                    IdPagemento = pags.IdPagemento
+                    IdPagamento = pags.IdPagamento
                 });
             }
         }
@@ -216,7 +231,7 @@ namespace PlatPet.ViewModel.Agendamento
                 {
                     pag = value;
                     OnPropertyChanged();
-                    Application.Current.Properties["IdPagamento"] = pag.IdPagemento;
+                    Application.Current.Properties["IdPagamento"] = pag.IdPagamento;
                 }
             }
         }

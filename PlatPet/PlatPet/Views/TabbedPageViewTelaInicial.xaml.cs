@@ -21,29 +21,46 @@ namespace PlatPet.Views
         public TabbedPageViewTelaInicial()
         {
             InitializeComponent();
-            opcaoViewModel = new OpcaoViewModel(); 
+            opcaoViewModel = new OpcaoViewModel();
             BindingContext = opcaoViewModel;
             //Mapa();
+            
             var mapa = new Map(MapSpan.FromCenterAndRadius(new Position(-23.5196648, -46.5962384), Distance.FromKilometers(1)));
+             = true;
             MapContainer.Children.Add(mapa);
 
+            Pin pin = new Pin
+            {
+                Label = "SHOP PET",
+                Address = "Teste",
+                Type = PinType.SearchResult,
+                Position = new Position(-23.5196648, -46.5962384)
+            };
+            mapa.Pins.Add(pin);
         }
+    
+
+        
         double latitude;
         double longitude;
-        protected async Task Mapa()
-        {
-            var locator = CrossGeolocator.Current;
-            locator.DesiredAccuracy = 50;
-            var position = await locator.GetPositionAsync();
-           
-            latitude = position.Latitude;
-            longitude = position.Longitude;
-        }
+        //protected async Task Mapa()
+        //{
+            
+
+
+        //}
 
         async void Adestramento(object sender, EventArgs e)
         {
             string msg = "Em produção!";
             await DisplayAlert("Informação", msg, "OK");
+            var locator = CrossGeolocator.Current;
+            locator.DesiredAccuracy = 50;
+            var position = await locator.GetPositionAsync(TimeSpan.FromSeconds(10));
+
+            latitude = position.Latitude;
+            longitude = position.Longitude;
+
         }
 
         async void Servico(object sender, EventArgs e)

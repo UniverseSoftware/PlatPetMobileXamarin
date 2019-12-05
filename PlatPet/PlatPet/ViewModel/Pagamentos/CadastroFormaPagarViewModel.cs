@@ -44,7 +44,7 @@ namespace PlatPet.ViewModel.Pagamentos
         }
         private async Task GravarAsync()
         {
-            var ehNovoUsuario = (FormaPagamento.IdPagemento == 0 ? true : false);
+            var ehNovoUsuario = (FormaPagamento.IdPagamento == 0 ? true : false);
 
             await uService.PostFormaPagarAsync(FormaPagamento);
 

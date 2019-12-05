@@ -6,7 +6,7 @@ namespace PlatPet.Models
 {
     public class FormaPagamento
     {
-        public int IdPagemento { get; set; }
+        public int IdPagamento { get; set; }
         public string DescPagamento { get; set; }
     }
 }
